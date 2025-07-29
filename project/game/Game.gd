@@ -13,6 +13,5 @@ class To:
 func _ready() -> void:
 	hsm.add_transition(standby, ingame, To.INGAME)
 	hsm.add_transition(ingame, standby, To.STANDBY)
-
 	hsm.initialize(self)
 	hsm.set_active(true)

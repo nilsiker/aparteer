@@ -1,7 +1,6 @@
 class_name World
 extends Node3D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	WorldChannel.level_loaded.connect(_on_world_level_loaded)
 	WorldChannel.level_unloaded.connect(_on_world_level_unloaded)

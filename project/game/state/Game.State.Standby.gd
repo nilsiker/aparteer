@@ -8,4 +8,4 @@ func _exit() -> void:
 	GameChannel.started.disconnect(_on_game_started)
 
 func _on_game_started() -> void:
-	dispatch(Game.To.INGAME)
+	dispatch(GameStateInGame.To.PAUSED)
