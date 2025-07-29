@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmp03a8dsb0ge"]
+
+[ext_resource type="Script" uid="uid://dx640hswnw1o4" path="res://main_menu/MainMenu.gd" id="1_oa53l"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oa53l")
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margins"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Margins/VBoxContainer"]
+layout_mode = 2
+text = "APARTEER"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY"
+
+[node name="SaveButton" type="Button" parent="Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SAVE"
+
+[node name="LoadButton" type="Button" parent="Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LOAD"
+
+[node name="QuitButton" type="Button" parent="Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "QUIT"

@@ -1,0 +1,18 @@
+godot_version = "4.4.0"
+
+[asset_infos.1822]
+title = "Phantom Camera"
+download_url = "https://github.com/ramokz/phantom-camera/archive/afa0fc6c11b9c24576043e8af7052df27a1ec20e.zip"
+
+[asset_infos.3338]
+title = "LimboConsole: in-game dev console"
+download_url = "https://github.com/limbonaut/limbo_console/releases/download/v0.7.0/limbo_console_v0.7.0.zip"
+
+[asset_infos.3787]
+title = "LimboAI: Behavior Trees & State Machines (Godot 4.4)"
+download_url = "https://github.com/limbonaut/limboai/releases/download/v1.4.1/limboai+v1.4.1.gdextension-4.4.zip"
+
+[install_folders]
+1822 = "phantom_camera"
+3338 = "limbo_console"
+3787 = "limboai"
