@@ -8,7 +8,5 @@ func _exit() -> void:
 	super._exit()
 	GameChannel.paused.disconnect(_on_game_paused)
 	
-func _on_game_paused():
+func _on_game_paused() -> void:
 	dispatch(Game.To.INGAME_PAUSED)
-	
-	

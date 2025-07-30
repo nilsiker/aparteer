@@ -14,6 +14,8 @@ func _ready() -> void:
 	save_button.pressed.connect(_on_save_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	
+	visible = false
+	
 func _on_game_paused():
 	visible = true
 	

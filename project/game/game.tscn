@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bgl78lkekn840" path="res://world/world.tscn" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cjrp4y1p25oad" path="res://game/state/Game.State.InGame.Playing.gd" id="4_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://cmp03a8dsb0ge" path="res://main_menu/main_menu.tscn" id="5_u5opy"]
-[ext_resource type="PackedScene" uid="uid://dx8nn4qjihiuu" path="res://level/level_debug_plane.tscn" id="6_dakft"]
+[ext_resource type="PackedScene" uid="uid://dx8nn4qjihiuu" path="res://level/scenes/level_debug_plane.tscn" id="6_dakft"]
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://pause_menu/pause_menu.tscn" id="12_qf6n1"]
 

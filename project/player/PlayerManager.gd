@@ -7,8 +7,12 @@ extends Node
 var player: Node3D = null
 
 func _ready() -> void:
+	WorldChannel.transition_finished.connect(_on_world_transition_finished)
 	PlayerChannel.spawn.connect(_on_player_spawn)
 	PlayerChannel.despawn.connect(_on_player_despawn)
+
+func _on_world_transition_finished(entrypoint: Node) -> void:
+	print("TODO spawn player at ", entrypoint)
 
 func _on_player_spawn(transform: Transform3D) -> void:
 	player = player_scene.instantiate()
