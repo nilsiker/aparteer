@@ -1,16 +1,16 @@
-class_name GameStateInGame
-extends LimboHSM
-
-class To:
-	const PAUSED = "To.Paused"
-	const PLAYING = "To.Playing"
-
-@onready var playing: LimboState = $Playing
-@onready var paused: LimboState = $Paused
-
-func _setup() -> void:
-	add_transition(playing, paused, To.PAUSED)
-	add_transition(paused, playing, To.PLAYING)
-	
+class_name GameState_InGame
+extends LimboState
+		
 func _enter() -> void:
-	print("entering ingame state")
+	GameChannel.saved.connect(_on_game_saved)
+	GameChannel.quitted.connect(_on_game_quitted)
+	
+func _exit() -> void:
+	GameChannel.saved.disconnect(_on_game_saved)
+	GameChannel.quitted.disconnect(_on_game_quitted)
+	
+func _on_game_saved(save: SaveFile) -> void:
+	print("TODO save game")
+
+func _on_game_quitted() -> void:
+	dispatch(Game.To.STANDBY)

@@ -6,6 +6,8 @@ signal loaded
 signal won
 signal lost
 signal quitted
+signal paused
+signal resumed
 
 func start() -> void:
 	started.emit()
@@ -24,3 +26,9 @@ func lose() -> void:
 
 func quit() -> void:
 	quitted.emit()
+
+func pause() -> void:
+	paused.emit()
+
+func resume() -> void:
+	resumed.emit()

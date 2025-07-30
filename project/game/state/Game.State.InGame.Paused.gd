@@ -1,8 +1,12 @@
-extends LimboState
+extends GameState_InGame
 
 func _enter() -> void:
-	print("Entering InGame.Paused")
-	get_tree().paused = true
-
+	super._enter()
+	GameChannel.resumed.connect(_on_game_resumed)
+	
 func _exit() -> void:
-	get_tree().paused = false
+	super._exit()
+	GameChannel.resumed.disconnect(_on_game_resumed)
+	
+func _on_game_resumed():
+	dispatch(Game.To.INGAME_PLAYING)

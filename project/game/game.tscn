@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=13 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
 [ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_l1rk1"]
@@ -6,35 +6,26 @@
 [ext_resource type="Script" uid="uid://dg8ypbl662q82" path="res://game/state/Game.State.Standby.gd" id="2_l8g03"]
 [ext_resource type="Script" uid="uid://blunv7cnpjkdw" path="res://game/state/Game.State.InGame.Paused.gd" id="3_3vho3"]
 [ext_resource type="PackedScene" uid="uid://cbngo1j1hydy1" path="res://player/player.tscn" id="3_dxrkv"]
-[ext_resource type="Script" uid="uid://bkebw2ynlfk43" path="res://game/state/Game.State.InGame.gd" id="3_j8tme"]
 [ext_resource type="PackedScene" uid="uid://bgl78lkekn840" path="res://world/world.tscn" id="4_dxrkv"]
 [ext_resource type="Script" uid="uid://cjrp4y1p25oad" path="res://game/state/Game.State.InGame.Playing.gd" id="4_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://cmp03a8dsb0ge" path="res://main_menu/main_menu.tscn" id="5_u5opy"]
 [ext_resource type="PackedScene" uid="uid://dx8nn4qjihiuu" path="res://level/level_debug_plane.tscn" id="6_dakft"]
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
-
-[sub_resource type="GDScript" id="GDScript_u5opy"]
-script/source = "class_name HSM
-extends LimboHSM
-"
+[ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://pause_menu/pause_menu.tscn" id="12_qf6n1"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_h7iqs")
 
 [node name="HSM" type="LimboHSM" parent="."]
-script = SubResource("GDScript_u5opy")
-
-[node name="InGame" type="LimboHSM" parent="HSM"]
-script = ExtResource("3_j8tme")
-
-[node name="Playing" type="LimboState" parent="HSM/InGame"]
-script = ExtResource("4_qf6n1")
-
-[node name="Paused" type="LimboState" parent="HSM/InGame"]
-script = ExtResource("3_3vho3")
 
 [node name="Standby" type="LimboState" parent="HSM"]
 script = ExtResource("2_l8g03")
+
+[node name="InGame_Playing" type="LimboState" parent="HSM"]
+script = ExtResource("4_qf6n1")
+
+[node name="InGame_Paused" type="LimboState" parent="HSM"]
+script = ExtResource("3_3vho3")
 
 [node name="PlayerManager" type="Node" parent="." node_paths=PackedStringArray("player_parent")]
 script = ExtResource("2_4fuuu")
@@ -128,11 +119,4 @@ expand_mode = 1
 
 [node name="MainMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("5_u5opy")]
 
-[node name="PauseMenu" type="Control" parent="UIViewportContainer/UIViewport/UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("12_qf6n1")]
