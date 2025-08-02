@@ -4,7 +4,7 @@ extends Node
 @export var player_scene: PackedScene
 @export var player_parent: Node
 
-var player: Node3D = null
+var player: Node2D = null
 
 func _ready() -> void:
 	WorldChannel.transition_finished.connect(_on_world_transition_finished)
@@ -14,12 +14,14 @@ func _ready() -> void:
 func _on_world_transition_finished(entrypoint: Node) -> void:
 	print("TODO spawn player at ", entrypoint)
 
-func _on_player_spawn(transform: Transform3D) -> void:
+func _on_player_spawn(transform: Transform2D) -> void:
 	player = player_scene.instantiate()
 	player.transform = transform
-	add_child(player)
+	player_parent.add_child(player)
 
 func _on_player_despawn() -> void:
 	if player:
+		player.name += "_to_remove"
 		player.queue_free()
+		player = null
 	

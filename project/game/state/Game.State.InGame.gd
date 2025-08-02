@@ -10,7 +10,7 @@ func _exit() -> void:
 	GameChannel.quitted.disconnect(_on_game_quitted)
 	
 func _on_game_saved(save: SaveFile) -> void:
-	print("TODO save game")
+	print("TODO save game " + save.version)
 
 func _on_game_quitted() -> void:
 	dispatch(Game.To.STANDBY)

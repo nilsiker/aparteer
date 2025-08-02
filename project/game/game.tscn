@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=17 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
-[ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_l1rk1"]
 [ext_resource type="Script" uid="uid://cqn6uv70jfr6q" path="res://player/PlayerManager.gd" id="2_4fuuu"]
 [ext_resource type="Script" uid="uid://dg8ypbl662q82" path="res://game/state/Game.State.Standby.gd" id="2_l8g03"]
 [ext_resource type="Script" uid="uid://blunv7cnpjkdw" path="res://game/state/Game.State.InGame.Paused.gd" id="3_3vho3"]
@@ -12,12 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://dx8nn4qjihiuu" path="res://level/scenes/level_debug_plane.tscn" id="6_dakft"]
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
 [ext_resource type="Script" uid="uid://cnli4nq1qr15l" path="res://input/InputManager.gd" id="8_ee6o4"]
+[ext_resource type="Script" uid="uid://bgbnf1iqmk82o" path="res://audio/AudioManager.gd" id="9_ee6o4"]
+[ext_resource type="PackedScene" uid="uid://f2qa8cigqqrw" path="res://ui/hud/hud.tscn" id="11_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://ui/pause_menu/pause_menu.tscn" id="12_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://dgvqge56ximu7" path="res://ui/options_menu/options_menu.tscn" id="13_vsp63"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
-[ext_resource type="PackedScene" uid="uid://dd210la60pu46" path="res://ui/controls_menu/controls_menu.tscn" id="14_hb504"]
-[ext_resource type="Script" uid="uid://rvgj50hacn3v" path="res://ui/options_menu/OptionsTabMenu.gd" id="14_ln7ps"]
-[ext_resource type="PackedScene" uid="uid://o26ja7l0t73i" path="res://ui/controls_menu/action_input_ui.tscn" id="16_4cobl"]
+[ext_resource type="PackedScene" uid="uid://brrjbfs15quv8" path="res://ui/options_menu/options_tab_menu.tscn" id="14_hb504"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_h7iqs")
@@ -43,6 +41,9 @@ script = ExtResource("6_j8tme")
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("8_ee6o4")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("9_ee6o4")
 
 [node name="WorldViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -81,85 +82,17 @@ render_target_update_mode = 4
 
 [node name="UI" type="CanvasLayer" parent="UIViewportContainer/UIViewport"]
 
-[node name="HUD" type="Control" parent="UIViewportContainer/UIViewport/UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Margins" type="MarginContainer" parent="UIViewportContainer/UIViewport/UI/HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Crosshair" type="Control" parent="UIViewportContainer/UIViewport/UI/HUD/Margins"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Crosshair" type="TextureRect" parent="UIViewportContainer/UIViewport/UI/HUD/Margins/Crosshair"]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_l1rk1")
-expand_mode = 1
+[node name="HUD" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("11_ln7ps")]
 
 [node name="MainMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("5_u5opy")]
 
 [node name="PauseMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("12_qf6n1")]
-visible = false
 
-[node name="OptionsTabMenu" type="TabContainer" parent="UIViewportContainer/UIViewport/UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-current_tab = 1
-use_hidden_tabs_for_min_size = true
-deselect_enabled = true
-script = ExtResource("14_ln7ps")
-
-[node name="Options" parent="UIViewportContainer/UIViewport/UI/OptionsTabMenu" instance=ExtResource("13_vsp63")]
-visible = false
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-focus_neighbor_left = NodePath("../../MainMenu")
-metadata/_tab_index = 0
-
-[node name="Controls" parent="UIViewportContainer/UIViewport/UI/OptionsTabMenu" instance=ExtResource("14_hb504")]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-ignore_prefixes = PackedStringArray("limbo", "ui")
-action_input_ui_scene = ExtResource("16_4cobl")
+[node name="OptionsTabMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("14_hb504")]
+offset_left = -200.0
+offset_top = -189.5
+offset_right = 200.0
+offset_bottom = 189.5
 
 [node name="Saves" type="PanelContainer" parent="UIViewportContainer/UIViewport/UI"]
 visible = false
@@ -175,8 +108,3 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_b686c")
-
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Options" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_options_menu_closed"]
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Options" to="UIViewportContainer/UIViewport/UI/PauseMenu" method="_on_options_closed"]
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Controls" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_controls_menu_closed"]
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Controls" to="UIViewportContainer/UIViewport/UI/PauseMenu" method="_on_controls_closed"]

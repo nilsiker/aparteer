@@ -14,7 +14,12 @@ func _on_controls_button_pressed() -> void:
 	OptionsChannel.open_controls_menu()
 	
 func _ready() -> void:
+	GameChannel.started.connect(_on_game_started)
+	GameChannel.resumed.connect(_on_game_resumed)
+	GameChannel.quitted.connect(_on_game_quitted)
+
 	OptionsChannel.ui_opened.connect(_on_ui_opened)
+
 	close_button.pressed.connect(_on_close_button_pressed)
 
 	fullscreen_button.toggled.connect(_on_fullscreen_toggled)
@@ -22,6 +27,19 @@ func _ready() -> void:
 	music_volume_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_volume_slider.value_changed.connect(_on_sfx_volume_changed)
 
+	master_volume_slider.value = Config.read_audio_setting("master_volume")
+	music_volume_slider.value = Config.read_audio_setting("music_volume")
+	sfx_volume_slider.value = Config.read_audio_setting("sfx_volume")
+
+	visible = false
+
+func _on_game_started() -> void:
+	visible = false
+
+func _on_game_resumed() -> void:
+	visible = false
+
+func _on_game_quitted() -> void:
 	visible = false
 
 func _on_fullscreen_toggled(pressed: bool) -> void:

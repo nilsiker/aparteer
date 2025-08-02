@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lp0cg4rewg67"]
+[gd_scene load_steps=7 format=3 uid="uid://f2qa8cigqqrw"]
 
-[ext_resource type="Script" uid="uid://c3o8ulwc166h1" path="res://ui/pause_menu/PauseMenu.gd" id="1_5hbt6"]
-[ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="1_le02u"]
+[ext_resource type="Script" uid="uid://c5al4bl27ebj1" path="res://ui/hud/HUD.gd" id="1_4d6w6"]
+[ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_xmswo"]
 
-[sub_resource type="Animation" id="Animation_jbgdu"]
+[sub_resource type="Animation" id="Animation_w75iv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -30,9 +30,8 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_le02u"]
+[sub_resource type="Animation" id="Animation_e0nub"]
 resource_name = "hide"
-step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,10 +39,10 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -58,8 +57,9 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mnjdh"]
+[sub_resource type="Animation" id="Animation_4d6w6"]
 resource_name = "show"
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,75 +85,61 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_le02u"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imuuq"]
 _data = {
-&"RESET": SubResource("Animation_jbgdu"),
-&"hide": SubResource("Animation_le02u"),
-&"show": SubResource("Animation_mnjdh")
+&"RESET": SubResource("Animation_w75iv"),
+&"hide": SubResource("Animation_e0nub"),
+&"show": SubResource("Animation_4d6w6")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_le02u")
-script = ExtResource("1_5hbt6")
+script = ExtResource("1_4d6w6")
 
-[node name="Background" type="PanelContainer" parent="."]
+[node name="Margins" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-layout_mode = 2
-theme_override_constants/margin_left = 60
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Crosshair" type="Control" parent="Margins"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "PAUSED"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "RESUME"
-
-[node name="SaveLoadButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SAVE & LOAD"
-
-[node name="OptionsButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "OPTIONS"
-
-[node name="QuitButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "QUIT"
+[node name="Crosshair" type="TextureRect" parent="Margins/Crosshair"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_xmswo")
+expand_mode = 1
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-&"": SubResource("AnimationLibrary_le02u")
+&"": SubResource("AnimationLibrary_imuuq")
 }
 speed_scale = 8.0

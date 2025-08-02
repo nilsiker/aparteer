@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://brrjbfs15quv8"]
+
+[ext_resource type="Script" uid="uid://rvgj50hacn3v" path="res://ui/options_menu/OptionsTabMenu.gd" id="1_d8tbu"]
+[ext_resource type="PackedScene" uid="uid://dgvqge56ximu7" path="res://ui/options_menu/options_menu.tscn" id="2_fcp3f"]
+[ext_resource type="PackedScene" uid="uid://dd210la60pu46" path="res://ui/controls_menu/controls_menu.tscn" id="3_v8fi5"]
+[ext_resource type="PackedScene" uid="uid://o26ja7l0t73i" path="res://ui/controls_menu/action_input_ui.tscn" id="4_d4arb"]
+
+[node name="OptionsTabMenu" type="TabContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+use_hidden_tabs_for_min_size = true
+deselect_enabled = true
+script = ExtResource("1_d8tbu")
+
+[node name="Options" parent="." instance=ExtResource("2_fcp3f")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../MainMenu")
+metadata/_tab_index = 0
+
+[node name="Controls" parent="." instance=ExtResource("3_v8fi5")]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+ignore_prefixes = PackedStringArray("limbo", "ui")
+action_input_ui_scene = ExtResource("4_d4arb")

@@ -5,6 +5,7 @@ extends Control
 @onready var save_button: Button = %SaveLoadButton
 @onready var options_button: Button = %OptionsButton
 @onready var quit_button: Button = %QuitButton
+@onready var anim: AnimationPlayer = %Anim
 
 func _ready() -> void:
 	GameChannel.paused.connect(_on_game_paused)
@@ -18,26 +19,30 @@ func _ready() -> void:
 	
 	visible = false
 	
-func _on_game_paused():
-	visible = true
+func open() -> void:
+	anim.play("show")
 	resume_button.grab_focus()
+
+func close() -> void:
+	anim.play("hide")
+
+func _on_game_paused(): open()
 	
-func _on_game_resumed():
-	visible = false
-	
-func _on_game_quitted():
-	visible = false
+func _on_game_resumed(): close()
+
+func _on_game_quitted(): close()
 
 func _on_resume_pressed() -> void:
 	GameChannel.resume()
 	
 func _on_save_pressed() -> void:
-	print("TODO open save/load")
+	GameChannel.save(SaveManager.dummy())
 	
 func _on_options_pressed() -> void:
 	OptionsChannel.open_ui()
 	
 func _on_quit_pressed() -> void:
+	close()
 	AppChannel.obscure(GameChannel.quit)
 
 func _on_options_closed() -> void:
