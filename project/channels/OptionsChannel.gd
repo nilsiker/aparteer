@@ -14,7 +14,6 @@ signal input_defaults_restored
 
 # UI
 signal ui_opened
-signal controls_ui_opened
 
 func toggle_fullscreen(fullscreen: bool) -> void:
 	fullscreen_toggled.emit(fullscreen)
@@ -36,6 +35,3 @@ func restore_input_defaults() -> void:
 
 func open_ui() -> void:
 	ui_opened.emit()
-
-func open_controls_menu() -> void:
-	controls_ui_opened.emit()

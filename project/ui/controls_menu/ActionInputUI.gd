@@ -20,7 +20,7 @@ func _ready() -> void:
 	OptionsChannel.input_action_changed.connect(_on_input_action_changed)
 	button.pressed.connect(_on_button_pressed)
 
-	label.text = action
+	label.text = action.capitalize()
 	button.text = InputManager.get_input_event(action).as_text().split(" (")[0]
 
 

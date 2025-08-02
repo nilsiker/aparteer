@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=19 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
 [ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_l1rk1"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dgvqge56ximu7" path="res://ui/options_menu/options_menu.tscn" id="13_vsp63"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
 [ext_resource type="PackedScene" uid="uid://dd210la60pu46" path="res://ui/controls_menu/controls_menu.tscn" id="14_hb504"]
+[ext_resource type="Script" uid="uid://rvgj50hacn3v" path="res://ui/options_menu/OptionsTabMenu.gd" id="14_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://o26ja7l0t73i" path="res://ui/controls_menu/action_input_ui.tscn" id="16_4cobl"]
 
 [node name="Game" type="Node"]
@@ -130,36 +131,33 @@ expand_mode = 1
 [node name="PauseMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("12_qf6n1")]
 visible = false
 
-[node name="OptionsMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("13_vsp63")]
-visible = false
-custom_minimum_size = Vector2(400, 0)
+[node name="OptionsTabMenu" type="TabContainer" parent="UIViewportContainer/UIViewport/UI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -192.0
-offset_right = 105.5
-offset_bottom = 192.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_left = NodePath("../MainMenu")
+current_tab = 1
+use_hidden_tabs_for_min_size = true
+deselect_enabled = true
+script = ExtResource("14_ln7ps")
 
-[node name="ControlsMenu" parent="UIViewportContainer/UIViewport/UI" instance=ExtResource("14_hb504")]
+[node name="Options" parent="UIViewportContainer/UIViewport/UI/OptionsTabMenu" instance=ExtResource("13_vsp63")]
 visible = false
 custom_minimum_size = Vector2(400, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.5
-offset_top = -66.5
-offset_right = 88.5
-offset_bottom = 66.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+focus_neighbor_left = NodePath("../../MainMenu")
+metadata/_tab_index = 0
+
+[node name="Controls" parent="UIViewportContainer/UIViewport/UI/OptionsTabMenu" instance=ExtResource("14_hb504")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 ignore_prefixes = PackedStringArray("limbo", "ui")
 action_input_ui_scene = ExtResource("16_4cobl")
 
@@ -178,5 +176,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_b686c")
 
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsMenu" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_options_menu_closed"]
-[connection signal="closed" from="UIViewportContainer/UIViewport/UI/ControlsMenu" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_controls_menu_closed"]
+[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Options" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_options_menu_closed"]
+[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Options" to="UIViewportContainer/UIViewport/UI/PauseMenu" method="_on_options_closed"]
+[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Controls" to="UIViewportContainer/UIViewport/UI/MainMenu" method="_on_controls_menu_closed"]
+[connection signal="closed" from="UIViewportContainer/UIViewport/UI/OptionsTabMenu/Controls" to="UIViewportContainer/UIViewport/UI/PauseMenu" method="_on_controls_closed"]

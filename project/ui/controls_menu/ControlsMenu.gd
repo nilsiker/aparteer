@@ -7,15 +7,11 @@ signal closed
 
 @onready var action_grid: GridContainer = %ActionGrid
 @onready var revert_to_defaults_button: Button = %RevertToDefaultsButton
-@onready var back_to_options_button: Button = %BackToOptionsButton
 @onready var close_button: Button = %CloseButton
 
 
 func _ready() -> void:
-	OptionsChannel.controls_ui_opened.connect(_on_controls_ui_opened)
-
 	close_button.pressed.connect(_on_close_button_pressed)
-	back_to_options_button.pressed.connect(_on_back_to_options_button_pressed)
 	revert_to_defaults_button.pressed.connect(_on_revert_to_defaults_button_pressed)
 
 	_init_from_actions()
@@ -45,7 +41,3 @@ func _on_controls_button_pressed() -> void:
 func _on_close_button_pressed() -> void:
 	visible = false
 	closed.emit()
-
-func _on_back_to_options_button_pressed() -> void:
-	visible = false
-	OptionsChannel.open_ui()

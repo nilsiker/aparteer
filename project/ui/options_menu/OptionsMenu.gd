@@ -9,12 +9,12 @@ signal closed
 @onready var music_volume_slider: Slider = %MusicVolumeSlider
 @onready var sfx_volume_slider: Slider = %SFXVolumeSlider
 
-@onready var controls_button: Button = %ControlsButton
 @onready var close_button: Button = %CloseButton
-
+func _on_controls_button_pressed() -> void:
+	OptionsChannel.open_controls_menu()
+	
 func _ready() -> void:
 	OptionsChannel.ui_opened.connect(_on_ui_opened)
-	controls_button.pressed.connect(_on_controls_button_pressed)
 	close_button.pressed.connect(_on_close_button_pressed)
 
 	fullscreen_button.toggled.connect(_on_fullscreen_toggled)
@@ -35,10 +35,6 @@ func _on_music_volume_changed(value: float) -> void:
 
 func _on_sfx_volume_changed(value: float) -> void:
 	OptionsChannel.set_sfx_volume(value)
-
-func _on_controls_button_pressed() -> void:
-	OptionsChannel.open_controls_menu()
-	visible = false
 
 func _on_close_button_pressed() -> void:
 	visible = false

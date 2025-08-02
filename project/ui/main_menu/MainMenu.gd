@@ -38,7 +38,7 @@ func _on_game_quitted() -> void:
 	play_button.grab_focus()
 
 func _on_options_menu_closed() -> void:
-	options_button.grab_focus()
+	if visible: options_button.grab_focus()
 
 func _on_controls_menu_closed() -> void:
-	options_button.grab_focus()
+	if visible: options_button.grab_focus()
