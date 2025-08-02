@@ -1,9 +1,9 @@
 class_name InputManager
 extends Node
 
+@export var ignore_prefixes: PackedStringArray = PackedStringArray(["ui", "game", "editor"])
 
 func _ready() -> void:
-	OptionsChannel.input_action_changed.connect(_on_input_action_changed)
 	OptionsChannel.input_defaults_restored.connect(_on_input_defaults_restored)
 
 	init_actions()
@@ -20,17 +20,11 @@ func init_actions() -> void:
 			for event in events:
 				InputMap.action_add_event(action, event)
 
-func _on_input_action_changed(changed_action: String, new_events: Array[InputEvent]) -> void:
-	if not InputMap.has_action(changed_action):  
-		push_error("Input action does not exist: " + changed_action)
-		return
-
-	InputConfig.set_action_events(changed_action, new_events)
-
 func _on_input_defaults_restored() -> void:
 	InputMap.load_from_project_settings()
 	var actions = InputMap.get_actions()
 	for action in actions:
+		if action.split("_")[0] in ignore_prefixes: continue
 		var events := InputMap.action_get_events(action)
 
 		if events.is_empty(): continue

@@ -21,13 +21,13 @@ static func set_action_events(action: String, events: Array[InputEvent]) -> void
 static func get_input_map() -> Dictionary:
 	var config = ConfigFile.new()
 	config.load(INPUT_CONFIG_PATH)
+	if not config.has_section(INPUT_SECTION): return {}
+
 	var input_map = {}
 	var actions = config.get_section_keys(INPUT_SECTION)
-	if not actions:
-		return {}
-
 	for action in actions:
 		input_map[action] = config.get_value(INPUT_SECTION, action)
+	
 	return input_map
 	
 

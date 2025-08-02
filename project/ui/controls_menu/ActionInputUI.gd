@@ -29,7 +29,6 @@ func focus() -> void:
 		button.grab_focus()
 
 func _on_input_action_changed(changed_action: String, new_event: InputEvent) -> void:
-	print(changed_action, " changed to ", new_event)
 	if self.action != changed_action: return
 	button.text = new_event.as_text().split(" (")[0]
 
