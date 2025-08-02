@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmp03a8dsb0ge"]
 
-[ext_resource type="Script" uid="uid://dx640hswnw1o4" path="res://main_menu/MainMenu.gd" id="1_oa53l"]
+[ext_resource type="Script" uid="uid://dx640hswnw1o4" path="res://ui/main_menu/MainMenu.gd" id="1_oa53l"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -31,7 +31,7 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="Margins/VBoxContainer"]
 layout_mode = 2
-text = "APARTEER"
+text = "GD TEMPLATE"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Margins/VBoxContainer"]
@@ -42,15 +42,15 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "PLAY"
 
-[node name="SaveButton" type="Button" parent="Margins/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SAVE"
-
 [node name="LoadButton" type="Button" parent="Margins/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "LOAD"
+
+[node name="OptionsButton" type="Button" parent="Margins/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="Margins/VBoxContainer"]
 unique_name_in_owner = true

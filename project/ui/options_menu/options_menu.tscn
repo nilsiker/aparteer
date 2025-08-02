@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgvqge56ximu7"]
+
+[ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="1_3s1t0"]
+[ext_resource type="Script" uid="uid://cibwm2wygfg7h" path="res://ui/options_menu/OptionsMenu.gd" id="2_8h7tm"]
+
+[node name="OptionsMenu" type="PanelContainer" node_paths=PackedStringArray("initial_focus")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+theme = ExtResource("1_3s1t0")
+script = ExtResource("2_8h7tm")
+initial_focus = NodePath("VBoxContainer/DisplayContainer/Margins/VBoxContainer/Fullscreen/FullscreenCheckButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DisplayContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="VBoxContainer/DisplayContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DisplayContainer/Margins"]
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="VBoxContainer/DisplayContainer/Margins/VBoxContainer"]
+layout_mode = 2
+text = "DISPLAY"
+
+[node name="DisplaySeparator" type="HSeparator" parent="VBoxContainer/DisplayContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="HBoxContainer" parent="VBoxContainer/DisplayContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="VBoxContainer/DisplayContainer/Margins/VBoxContainer/Fullscreen"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheckButton" type="CheckButton" parent="VBoxContainer/DisplayContainer/Margins/VBoxContainer/Fullscreen"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AudioContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Margins" type="MarginContainer" parent="VBoxContainer/AudioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AudioContainer/Margins"]
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer"]
+layout_mode = 2
+text = "AUDIO"
+
+[node name="AudioSeparator" type="HSeparator" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/MasterVolume"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/MasterVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_3s1t0")
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/MusicVolume"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/MusicVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_3s1t0")
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="SFXVolume" type="HBoxContainer" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/SFXVolume"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "SFX"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer/AudioContainer/Margins/VBoxContainer/SFXVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_3s1t0")
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="ControlsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+text = "CLOSE"

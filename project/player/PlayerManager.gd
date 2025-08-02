@@ -22,3 +22,4 @@ func _on_player_spawn(transform: Transform3D) -> void:
 func _on_player_despawn() -> void:
 	if player:
 		player.queue_free()
+	

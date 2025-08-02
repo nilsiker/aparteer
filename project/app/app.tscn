@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://4xgweq0mvduw"]
+[gd_scene load_steps=8 format=3 uid="uid://4xgweq0mvduw"]
 
 [ext_resource type="Script" uid="uid://cbvosi76m5pr7" path="res://app/App.gd" id="1_e0wx5"]
+[ext_resource type="Script" uid="uid://bk7rpxg4yosxr" path="res://config/ConfigManager.gd" id="2_bnw3p"]
 [ext_resource type="PackedScene" uid="uid://e37ee3o5kay4" path="res://game/game.tscn" id="2_fx3ps"]
 
 [sub_resource type="Animation" id="Animation_bnw3p"]
@@ -94,6 +95,9 @@ _data = {
 [node name="App" type="Node"]
 script = ExtResource("1_e0wx5")
 
+[node name="ConfigManager" type="Node" parent="."]
+script = ExtResource("2_bnw3p")
+
 [node name="Game" parent="." instance=ExtResource("2_fx3ps")]
 
 [node name="Blackout" type="ColorRect" parent="."]
@@ -110,4 +114,4 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_gmj5t")
 }
-speed_scale = 2.0
+speed_scale = 4.0

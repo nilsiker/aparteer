@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bm3yci578ubi8"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ijnqe"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_j7ejt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7ejt"]
+bg_color = Color(0.629674, 0.629675, 0.629675, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tg35"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx5dl"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijnqe"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.237539, 0.237539, 0.237539, 0.792157)
+
+[resource]
+HSlider/icons/grabber = SubResource("ImageTexture_ijnqe")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_j7ejt")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_j7ejt")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0tg35")
+HSlider/styles/slider = SubResource("StyleBoxFlat_lx5dl")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ijnqe")

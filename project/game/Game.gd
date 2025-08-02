@@ -27,8 +27,8 @@ func _ready() -> void:
 	hsm.set_active(true)
 	
 func _on_active_state_changed(curr: LimboState, prev: LimboState):
-	print("Game: " + (prev.name if prev else "none") + " -> " + curr.name)
+	print("Game: " + (prev.name if prev else &"none") + " -> " + curr.name)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		GameChannel.pause()
+			hsm.dispatch(Event.PAUSE)
