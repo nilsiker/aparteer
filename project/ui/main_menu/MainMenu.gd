@@ -32,8 +32,10 @@ func _on_quit_button_pressed() -> void:
 func _on_game_started() -> void:
 	visible = false
 
+
 func _on_game_quitted() -> void:
 	visible = true
+	play_button.grab_focus()
 
 func _on_options_menu_closed() -> void:
 	options_button.grab_focus()

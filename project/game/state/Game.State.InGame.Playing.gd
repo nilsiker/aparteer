@@ -15,6 +15,7 @@ func _exit() -> void:
 func _on_game_paused() -> void:
 	dispatch(Game.To.INGAME_PAUSED)
 
-func _on_game_event_pause() -> void:
+func _on_game_event_pause() -> bool:
 	GameChannel.pause()
+	return true
 	

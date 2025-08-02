@@ -36,21 +36,19 @@ func _start_listening() -> void:
 	if status != Status.IDLE: return
 	status = Status.LISTENING
 	button.disabled = true
+	button.release_focus()
 
 	revert_event_text = button.text
 	button.text = "Listening..."
 	input_blocker.visible = true
 
-	get_viewport().set_input_as_handled()
 
-func _stop_listening() -> void:
+func _stop_listening() -> void: 
 	if status != Status.LISTENING: return
 	status = Status.IDLE
 	button.disabled = false
-
+	button.grab_focus()
 	input_blocker.visible = false
-
-	get_viewport().set_input_as_handled()
 
 func _on_button_pressed() -> void:
 	_start_listening()

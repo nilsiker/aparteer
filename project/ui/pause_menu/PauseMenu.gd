@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 func _on_game_paused():
 	visible = true
+	resume_button.grab_focus()
 	
 func _on_game_resumed():
 	visible = false
