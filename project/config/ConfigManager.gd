@@ -19,5 +19,5 @@ func _on_music_volume_changed(volume: float) -> void:
 func _on_sfx_volume_changed(volume: float) -> void:
 	Config.write_audio_setting("sfx_volume", volume)
 
-func _on_input_action_changed(action: String, event: InputEvent) -> void:
-	InputConfig.set_action_key(action, event)
+func _on_input_action_changed(action: String, events: Array[InputEvent]) -> void:
+	InputConfig.set_action_events(action, events)

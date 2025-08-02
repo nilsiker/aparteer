@@ -34,9 +34,16 @@ columns = 2
 
 [node name="ActionInputUI" parent="VBox/ControlsVBox/ActionGrid" instance=ExtResource("2_kdate")]
 layout_mode = 2
+action = "Pause"
 
 [node name="ButtonsVBox" type="VBoxContainer" parent="VBox"]
 layout_mode = 2
+
+[node name="RevertToDefaultsButton" type="Button" parent="VBox/ButtonsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+text = "REVERT TO DEFAULTS"
 
 [node name="BackToOptionsButton" type="Button" parent="VBox/ButtonsVBox"]
 unique_name_in_owner = true

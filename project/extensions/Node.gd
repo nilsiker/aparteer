@@ -8,3 +8,9 @@ static func get_parent(node: Node, cls: String) -> Node:
 	
 	return parent
 
+
+static func clear_children(node: Node) -> void:
+	for child in node.get_children():
+		child.name += "_to_remove"
+		node.remove_child(child)
+		child.queue_free()

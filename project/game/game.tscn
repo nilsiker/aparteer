@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=18 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
 [ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_l1rk1"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dgvqge56ximu7" path="res://ui/options_menu/options_menu.tscn" id="13_vsp63"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
 [ext_resource type="PackedScene" uid="uid://dd210la60pu46" path="res://ui/controls_menu/controls_menu.tscn" id="14_hb504"]
+[ext_resource type="PackedScene" uid="uid://o26ja7l0t73i" path="res://ui/controls_menu/action_input_ui.tscn" id="16_4cobl"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_h7iqs")
@@ -159,6 +160,8 @@ offset_right = 88.5
 offset_bottom = 66.5
 grow_horizontal = 2
 grow_vertical = 2
+ignore_prefixes = PackedStringArray("limbo", "ui")
+action_input_ui_scene = ExtResource("16_4cobl")
 
 [node name="Saves" type="PanelContainer" parent="UIViewportContainer/UIViewport/UI"]
 visible = false

@@ -1,7 +1,9 @@
+class_name ActionInputUI
 extends HBoxContainer
 
 @export var action: String
 
+@onready var label: Label = %Label
 @onready var button: Button = %Button
 @onready var input_blocker: Control = %InputBlocker
 
@@ -18,13 +20,18 @@ func _ready() -> void:
 	OptionsChannel.input_action_changed.connect(_on_input_action_changed)
 	button.pressed.connect(_on_button_pressed)
 
+	label.text = action
+	button.text = InputManager.get_input_event(action).as_text().split(" (")[0]
+
+
 func focus() -> void:
 	if button:
 		button.grab_focus()
 
 func _on_input_action_changed(changed_action: String, new_event: InputEvent) -> void:
+	print(changed_action, " changed to ", new_event)
 	if self.action != changed_action: return
-	button.text = new_event.as_text()
+	button.text = new_event.as_text().split(" (")[0]
 
 func _start_listening() -> void:
 	if status != Status.IDLE: return

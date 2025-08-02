@@ -1,28 +1,47 @@
 class_name InputManager
 extends Node
 
+
 func _ready() -> void:
 	OptionsChannel.input_action_changed.connect(_on_input_action_changed)
+	OptionsChannel.input_defaults_restored.connect(_on_input_defaults_restored)
 
 	init_actions()
+
 
 func init_actions() -> void:
 	var actions = InputMap.get_actions()
 	var configured_actions: Dictionary = InputConfig.get_input_map()
 
 	for action in actions:
-		print("initializing action: ", action)
 		if(action in configured_actions):
-			var event = configured_actions[action] as InputEvent
-			print("Action has configured event: ", event.as_text())
+			var events = configured_actions[action] as Array[InputEvent]
 			InputMap.action_erase_events(action)
-			InputMap.action_add_event(action, event)
-		else:
-			print("Action has no configured event, using default.")
+			for event in events:
+				InputMap.action_add_event(action, event)
 
-func _on_input_action_changed(changed_action: String, new_event: InputEvent) -> void:
+func _on_input_action_changed(changed_action: String, new_events: Array[InputEvent]) -> void:
 	if not InputMap.has_action(changed_action):  
 		push_error("Input action does not exist: " + changed_action)
 		return
 
-	InputConfig.set_action_key(changed_action, new_event)
+	InputConfig.set_action_events(changed_action, new_events)
+
+func _on_input_defaults_restored() -> void:
+	InputMap.load_from_project_settings()
+	var actions = InputMap.get_actions()
+	for action in actions:
+		var events := InputMap.action_get_events(action)
+
+		if events.is_empty(): continue
+
+		var first_event = events.front() as InputEvent
+		OptionsChannel.change_input_action(action, first_event)
+	InputConfig.delete()
+
+static func get_input_event(action: String) -> InputEvent:
+	var overridden = InputConfig.get_action(action)
+	if overridden:
+		return overridden as InputEvent
+	else:
+		return InputMap.action_get_events(action)[0]
