@@ -12,6 +12,7 @@ func _setup() -> void:
 func _enter() -> void:
 	super._enter()
 	input.input_vector_changed.connect(_on_input_vector_changed)
+	input.interacted.connect(_on_input_interacted)
 
 	sprite.walk()
 	sprite.face(input.input_vector)
@@ -19,6 +20,7 @@ func _enter() -> void:
 func _exit() -> void:
 	super._exit()
 	input.input_vector_changed.disconnect(_on_input_vector_changed)
+	input.interacted.disconnect(_on_input_interacted)
 
 func _update(delta: float) -> void:
 	_update_velocity(delta)
@@ -36,3 +38,6 @@ func _update_velocity(delta: float) -> void:
 func _on_input_vector_changed(input_vector: Vector2) -> void:
 	if input_vector == Vector2.ZERO: return
 	sprite.face(input_vector)
+
+func _on_input_interacted() -> void:
+	dispatch(Player2D.To.INTERACTING)

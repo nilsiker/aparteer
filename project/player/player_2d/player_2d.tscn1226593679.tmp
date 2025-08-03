@@ -20,11 +20,6 @@ var/sprite/type = 22
 var/sprite/value = NodePath("../PlayerSprite")
 var/sprite/hint = 26
 var/sprite/hint_string = "PlayerSprite"
-var/interactor/name = &"interactor"
-var/interactor/type = 22
-var/interactor/value = NodePath("../Interactor")
-var/interactor/hint = 26
-var/interactor/hint_string = "Interactor"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcfxo"]
 radius = 4.0

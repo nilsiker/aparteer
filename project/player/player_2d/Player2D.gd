@@ -5,6 +5,7 @@ class To:
 	const IDLE = "To.Idle"
 	const DISABLED = "To.Disabled"
 	const MOVING = "To.Moving"
+	const INTERACTING = "To.Interacting"
 
 class Out:
 	const MOVE = "Out.Move"
@@ -13,6 +14,7 @@ class Out:
 @onready var idle: LimboState = $PlayerHSM/Idle
 @onready var disabled: LimboState = $PlayerHSM/Disabled
 @onready var moving: LimboState = $PlayerHSM/Moving
+@onready var interacting: LimboState = $PlayerHSM/Interacting
 
 @export var speed = 75.0
 @export var acceleration = 250.0
@@ -26,13 +28,15 @@ func _ready() -> void:
 	hsm.add_transition(hsm.ANYSTATE, idle, To.IDLE)
 	hsm.add_transition(hsm.ANYSTATE, disabled, To.DISABLED)
 	hsm.add_transition(idle, moving, To.MOVING)
+	hsm.add_transition(interacting, idle, To.IDLE)
+	hsm.add_transition(idle, interacting, To.INTERACTING)
+	hsm.add_transition(moving, interacting, To.INTERACTING)
+
 
 	hsm.initialize(self)
 	hsm.set_active(true)
 
 	print(hsm.blackboard.get_var(&"input") == $PlayerInput2D)
-
-
 
 func _exit_tree() -> void:
 	DebugChannel.remove_hsm(hsm)
