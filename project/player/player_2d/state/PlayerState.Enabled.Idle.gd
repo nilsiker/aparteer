@@ -11,9 +11,12 @@ func _enter() -> void:
 	super._enter()
 	input.input_vector_changed.connect(_on_input_vector_changed)
 	input.interacted.connect(_on_input_interacted)
+
+	if input.input_vector != Vector2.ZERO: 
+		dispatch(Player2D.To.MOVING)
+		return
 	
 	sprite.idle()
-	
 
 func _exit() -> void:
 	super._exit()

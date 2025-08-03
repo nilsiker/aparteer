@@ -16,5 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo(): return
 	
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if event.is_action("interact"):
+	
+	if event.is_action_pressed("interact"):
 		interacted.emit()

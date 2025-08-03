@@ -6,11 +6,16 @@ signal interaction_started
 signal interaction_finished
 signal interaction_cancelled
 
+@export var detector: InteractableDetector
 
 var current_interactable: Interactable
 
-func is_missing_interactable() -> bool:
-	return current_interactable == null
+func _ready() -> void:
+	detector.closest_changed.connect(_on_detector_closest_changed)
+	
+
+func has_interactable() -> bool:
+	return current_interactable != null
 
 func interact() -> bool:
 	if not current_interactable: return false
@@ -27,3 +32,7 @@ func interact() -> bool:
 
 func cancel_interaction() -> void:
 	interaction_cancelled.emit()
+
+func _on_detector_closest_changed(new_interactable: Interactable) -> void:
+	print(new_interactable)
+	current_interactable = new_interactable

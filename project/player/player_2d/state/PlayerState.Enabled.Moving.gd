@@ -14,8 +14,8 @@ func _enter() -> void:
 	input.input_vector_changed.connect(_on_input_vector_changed)
 	input.interacted.connect(_on_input_interacted)
 
-	sprite.walk()
 	sprite.face(input.input_vector)
+	sprite.walk()
 
 func _exit() -> void:
 	super._exit()

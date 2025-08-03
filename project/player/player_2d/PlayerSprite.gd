@@ -24,22 +24,16 @@ func interact() -> void:
 	anim.play("interact")
 	label.text = "interact"
 
-
 func face(vector: Vector2) -> void:
-	if vector == Vector2.ZERO:return
+	if vector == Vector2.ZERO: return
 
-	if vector.y > 0:
-		flip_h = false
-		_side = SIDE_F
-	elif vector.y < 0:
-		flip_h = false
-		_side = SIDE_B
-	elif vector.x < 0:
-		flip_h = true
-		_side = "s"
-	elif vector.x > 0:
-		flip_h = false
-		_side = "s"
+	flip_h = vector.x < 0
+
+	if vector.y > 0: _side = SIDE_F
+	elif vector.y < 0: _side = SIDE_B
+	elif vector.x < 0: _side = "s"
+	elif vector.x > 0: _side = "s"
+	
 	_update_animation()
 		
 func _update_animation() -> void:
