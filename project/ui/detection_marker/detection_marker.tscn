@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://qc1t0ley1ww5"]
+
+[ext_resource type="Script" uid="uid://mwtbyeavfpiq" path="res://ui/detection_marker/DetectionMarker.gd" id="1_yy5qf"]
+
+[node name="InteractionIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yy5qf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -15.0
+offset_right = 34.0
+offset_bottom = 52.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 48
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1

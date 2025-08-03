@@ -1,6 +1,11 @@
 class_name Interactable
 extends Node
 
+signal detected
+signal undetected
+signal selected
+signal deselected
+
 enum InteractionType {
 	Instant,
 	Duration,
@@ -14,3 +19,8 @@ func interact() -> void:
 
 func get_global_pos() -> Vector2:
 	return get_parent().global_position
+
+func on_detected(): detected.emit()
+func on_undetected(): undetected.emit()
+func on_selected(): selected.emit()
+func on_deselected(): deselected.emit()

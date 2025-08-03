@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5r6pr436xbk"]
+[gd_scene load_steps=6 format=3 uid="uid://c5r6pr436xbk"]
 
 [ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_log83"]
 [ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_sbqmg"]
 [ext_resource type="Script" uid="uid://blli4ldve3ha1" path="res://interaction/pickup/Pickup.gd" id="3_g3nxv"]
+[ext_resource type="PackedScene" uid="uid://qc1t0ley1ww5" path="res://ui/detection_marker/detection_marker.tscn" id="4_gejgl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g3nxv"]
+radius = 5.0
 
 [node name="Debug_Level_0" type="Node2D" node_paths=PackedStringArray("entrypoint")]
 script = ExtResource("1_sbqmg")
@@ -26,22 +28,41 @@ offset_right = 155.0
 offset_bottom = 48.0
 text = "DEBUG_LEVEL_0"
 
-[node name="Pickup1" type="Area2D" parent="."]
-position = Vector2(173, 85)
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2(135, 135)
+collision_layer = 4
 
-[node name="Pickup" type="Node" parent="Pickup1"]
+[node name="Pickup" type="Node2D" parent="PickupArea"]
 script = ExtResource("3_g3nxv")
-metadata/_custom_type_script = "uid://blli4ldve3ha1"
+id = "123"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup1"]
+[node name="InteractIcon" parent="PickupArea/Pickup" instance=ExtResource("4_gejgl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_g3nxv")
 
-[node name="Pickup2" type="Area2D" parent="."]
-position = Vector2(121, 128)
+[node name="PickupArea2" type="Area2D" parent="."]
+position = Vector2(100, 125)
+collision_layer = 4
 
-[node name="Pickup" type="Node" parent="Pickup2"]
+[node name="Pickup" type="Node2D" parent="PickupArea2"]
 script = ExtResource("3_g3nxv")
-metadata/_custom_type_script = "uid://blli4ldve3ha1"
+id = "asd"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup2"]
+[node name="InteractIcon" parent="PickupArea2/Pickup" instance=ExtResource("4_gejgl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2"]
+shape = SubResource("CircleShape2D_g3nxv")
+
+[node name="PickupArea3" type="Area2D" parent="."]
+position = Vector2(87, 115)
+collision_layer = 4
+
+[node name="Pickup" type="Node2D" parent="PickupArea3"]
+script = ExtResource("3_g3nxv")
+id = "hd"
+
+[node name="InteractIcon" parent="PickupArea3/Pickup" instance=ExtResource("4_gejgl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea3"]
 shape = SubResource("CircleShape2D_g3nxv")

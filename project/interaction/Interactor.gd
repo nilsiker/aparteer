@@ -6,13 +6,12 @@ signal interaction_started
 signal interaction_finished
 signal interaction_cancelled
 
-@export var detector: InteractableDetector
+@export var picker: InteractableSelector
 
 var current_interactable: Interactable
 
 func _ready() -> void:
-	detector.closest_changed.connect(_on_detector_closest_changed)
-	
+	picker.selected.connect(_on_picker_selected)
 
 func has_interactable() -> bool:
 	return current_interactable != null
@@ -24,6 +23,7 @@ func interact() -> bool:
 
 	match current_interactable.interaction_type:
 		Interactable.InteractionType.Instant:
+			current_interactable.interact()
 			interaction_finished.emit()
 		Interactable.InteractionType.Duration:
 			pass
@@ -33,6 +33,7 @@ func interact() -> bool:
 func cancel_interaction() -> void:
 	interaction_cancelled.emit()
 
-func _on_detector_closest_changed(new_interactable: Interactable) -> void:
-	print(new_interactable)
-	current_interactable = new_interactable
+func _on_picker_selected(previous: Interactable, new: Interactable) -> void:
+	if previous: previous.on_deselected()
+	if new: new.on_selected()
+	current_interactable = new
