@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mwtbyeavfpiq" path="res://ui/detection_marker/DetectionMarker.gd" id="1_yy5qf"]
 
 [node name="InteractionIcon" type="Control"]
+z_index = 1000
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yy5qf")

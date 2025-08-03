@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5r6pr436xbk"]
+[gd_scene load_steps=6 format=3 uid="uid://coiev2ne1hr7b"]
 
 [ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_log83"]
-[ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_sbqmg"]
+[ext_resource type="Script" path="res://level/Level.gd" id="1_sbqmg"]
 [ext_resource type="Script" uid="uid://blli4ldve3ha1" path="res://interaction/pickup/Pickup.gd" id="3_g3nxv"]
 [ext_resource type="PackedScene" uid="uid://qc1t0ley1ww5" path="res://ui/detection_marker/detection_marker.tscn" id="4_gejgl"]
 
