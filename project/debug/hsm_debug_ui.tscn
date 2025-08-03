@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bii6ofqjiwpmb"]
+
+[ext_resource type="Script" uid="uid://cfb1dd5nf7lcf" path="res://debug/HSMDebugUI.gd" id="1_ibxx2"]
+
+[node name="HSMDebugUI" type="HBoxContainer"]
+script = ExtResource("1_ibxx2")
+
+[node name="Name" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.678431)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Name"
+
+[node name="Info" type="Label" parent="."]
+layout_mode = 2
+text = "Info"

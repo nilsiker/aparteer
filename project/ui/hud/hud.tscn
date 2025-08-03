@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://f2qa8cigqqrw"]
+[gd_scene load_steps=6 format=3 uid="uid://f2qa8cigqqrw"]
 
 [ext_resource type="Script" uid="uid://c5al4bl27ebj1" path="res://ui/hud/HUD.gd" id="1_4d6w6"]
-[ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_xmswo"]
 
 [sub_resource type="Animation" id="Animation_w75iv"]
 length = 0.001
@@ -112,30 +111,6 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
-
-[node name="Crosshair" type="Control" parent="Margins"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Crosshair" type="TextureRect" parent="Margins/Crosshair"]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_xmswo")
-expand_mode = 1
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

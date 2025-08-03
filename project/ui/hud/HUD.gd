@@ -5,11 +5,11 @@ extends Control
 
 func _ready() -> void:
 	# Connect to the game state changes
-	GameChannel.started.connect(_on_game_started)
+	GameChannel.readied.connect(_on_game_readied)
 	GameChannel.paused.connect(_on_game_paused)
 	GameChannel.resumed.connect(_on_game_resumed)
 
-func _on_game_started() -> void:
+func _on_game_readied() -> void:
 	anim.play("show")
 
 func _on_game_paused() -> void:

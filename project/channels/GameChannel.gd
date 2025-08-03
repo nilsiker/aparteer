@@ -1,7 +1,10 @@
 extends Node
 
-signal started
+signal start_requested
+signal starting
+signal readied
 signal saved(save: SaveFile)
+signal loading
 signal loaded
 signal won
 signal lost
@@ -9,13 +12,22 @@ signal quitted
 signal paused
 signal resumed
 
-func start() -> void:
-	started.emit()
+func request_start() -> void:
+	start_requested.emit()
+
+func broadcast_starting() -> void:
+	starting.emit()
+
+func broadcast_readied() -> void:
+	readied.emit()
 
 func save(save_file: SaveFile) -> void:
 	saved.emit(save_file)
 
 func load() -> void:
+	loading.emit()
+
+func broadcast_loaded() -> void:
 	loaded.emit()
 
 func win() -> void:

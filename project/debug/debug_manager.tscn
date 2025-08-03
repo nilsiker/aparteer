@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct5344or878o1"]
+
+[ext_resource type="Script" uid="uid://iaixirvrlwno" path="res://debug/DebugManager.gd" id="1_dyrb0"]
+[ext_resource type="PackedScene" uid="uid://bii6ofqjiwpmb" path="res://debug/hsm_debug_ui.tscn" id="2_kk8wu"]
+
+[node name="DebugManager" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_dyrb0")
+debug_hsm_ui_scene = ExtResource("2_kk8wu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HSMs" type="VBoxContainer" parent="Control/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSMDebugUI" parent="Control/PanelContainer/HSMs" instance=ExtResource("2_kk8wu")]
+layout_mode = 2

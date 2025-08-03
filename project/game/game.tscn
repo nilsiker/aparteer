@@ -1,17 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=19 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
 [ext_resource type="Script" uid="uid://cqn6uv70jfr6q" path="res://player/PlayerManager.gd" id="2_4fuuu"]
 [ext_resource type="Script" uid="uid://dg8ypbl662q82" path="res://game/state/Game.State.Standby.gd" id="2_l8g03"]
 [ext_resource type="Script" uid="uid://blunv7cnpjkdw" path="res://game/state/Game.State.InGame.Paused.gd" id="3_3vho3"]
-[ext_resource type="PackedScene" uid="uid://cbngo1j1hydy1" path="res://player/player.tscn" id="3_dxrkv"]
-[ext_resource type="PackedScene" uid="uid://bgl78lkekn840" path="res://world/world.tscn" id="4_dxrkv"]
+[ext_resource type="Script" uid="uid://474m4gu437ih" path="res://game/state/Starting.gd" id="3_ln7ps"]
+[ext_resource type="Script" uid="uid://cbtvfd182kkqp" path="res://game/state/Loading.gd" id="4_pxxsx"]
 [ext_resource type="Script" uid="uid://cjrp4y1p25oad" path="res://game/state/Game.State.InGame.Playing.gd" id="4_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://cmp03a8dsb0ge" path="res://ui/main_menu/main_menu.tscn" id="5_u5opy"]
-[ext_resource type="PackedScene" uid="uid://dx8nn4qjihiuu" path="res://level/scenes/level_debug_plane.tscn" id="6_dakft"]
+[ext_resource type="PackedScene" uid="uid://go07gw5rojqj" path="res://player/player_2d/player_2d.tscn" id="6_ee6o4"]
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
 [ext_resource type="Script" uid="uid://cnli4nq1qr15l" path="res://input/InputManager.gd" id="8_ee6o4"]
 [ext_resource type="Script" uid="uid://bgbnf1iqmk82o" path="res://audio/AudioManager.gd" id="9_ee6o4"]
+[ext_resource type="PackedScene" uid="uid://c5r6pr436xbk" path="res://level/scenes/debug_level_0.tscn" id="11_4cobl"]
+[ext_resource type="Script" uid="uid://cqjmnwio3rcig" path="res://world/world_2d/World2D.gd" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://f2qa8cigqqrw" path="res://ui/hud/hud.tscn" id="11_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://ui/pause_menu/pause_menu.tscn" id="12_qf6n1"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
@@ -25,6 +27,12 @@ script = ExtResource("1_h7iqs")
 [node name="Standby" type="LimboState" parent="HSM"]
 script = ExtResource("2_l8g03")
 
+[node name="Starting" type="LimboState" parent="HSM"]
+script = ExtResource("3_ln7ps")
+
+[node name="Loading" type="LimboState" parent="HSM"]
+script = ExtResource("4_pxxsx")
+
 [node name="InGame_Playing" type="LimboState" parent="HSM"]
 script = ExtResource("4_qf6n1")
 
@@ -33,8 +41,8 @@ script = ExtResource("3_3vho3")
 
 [node name="PlayerManager" type="Node" parent="." node_paths=PackedStringArray("player_parent")]
 script = ExtResource("2_4fuuu")
-player_scene = ExtResource("3_dxrkv")
-player_parent = NodePath("../WorldViewportContainer/WorldViewport/World")
+player_scene = ExtResource("6_ee6o4")
+player_parent = NodePath("../WorldViewportContainer/WorldViewport/World2D")
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("6_j8tme")
@@ -60,9 +68,9 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="World" parent="WorldViewportContainer/WorldViewport" instance=ExtResource("4_dxrkv")]
-
-[node name="LevelDebugPlane" parent="WorldViewportContainer/WorldViewport/World" instance=ExtResource("6_dakft")]
+[node name="World2D" type="Node2D" parent="WorldViewportContainer/WorldViewport"]
+script = ExtResource("11_ee6o4")
+start_scene = ExtResource("11_4cobl")
 
 [node name="UIViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

@@ -1,10 +1,10 @@
 extends LimboState
 
 func _enter() -> void:
-	GameChannel.started.connect(_on_game_started)
+	GameChannel.start_requested.connect(_on_game_start_requested)
 
 func _exit() -> void:
-	GameChannel.started.disconnect(_on_game_started)
+	GameChannel.start_requested.disconnect(_on_game_start_requested)
 
-func _on_game_started() -> void:
-	dispatch(Game.To.INGAME_PLAYING)
+func _on_game_start_requested() -> void:
+	dispatch(Game.To.STARTING)

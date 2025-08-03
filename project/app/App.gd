@@ -9,6 +9,12 @@ func _ready() -> void:
 	AppChannel.quitted.connect(_on_app_quitted)
 	AppChannel.obscured.connect(_on_app_obscured)
 
+	_register_hsms_for_debug()
+	
+func _register_hsms_for_debug() -> void:
+	for hsm in find_children("*", "LimboHSM", true):
+		DebugChannel.add_hsm(hsm)
+	
 
 func _on_app_quitted() -> void:
 	get_tree().quit()

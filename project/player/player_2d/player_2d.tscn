@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://go07gw5rojqj"]
+
+[ext_resource type="Script" uid="uid://rop0bxcjv6em" path="res://player/player_2d/Player2D.gd" id="1_pcfxo"]
+[ext_resource type="Script" uid="uid://cjkeeub5y3ov1" path="res://player/player_2d/state/PlayerState.Disabled.gd" id="2_0y3hk"]
+[ext_resource type="Script" uid="uid://cftb3kw0dlvj6" path="res://player/player_2d/state/PlayerState.Enabled.Idle.gd" id="3_gui4m"]
+[ext_resource type="Script" uid="uid://mr0w3308sca0" path="res://player/player_2d/state/PlayerState.Enabled.Moving.gd" id="4_qqbkv"]
+[ext_resource type="Script" uid="uid://bxo7whv11h1pp" path="res://player/player_2d/PlayerInput2D.gd" id="5_gui4m"]
+[ext_resource type="PackedScene" uid="uid://d262hamx0n175" path="res://player/player_2d/player_sprite.tscn" id="5_qqbkv"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_0y3hk"]
+var/input/name = &"input"
+var/input/type = 22
+var/input/value = NodePath("../PlayerInput2D")
+var/input/hint = 26
+var/input/hint_string = "PlayerInput2D"
+var/sprite/name = &"sprite"
+var/sprite/type = 22
+var/sprite/value = NodePath("../PlayerSprite")
+var/sprite/hint = 26
+var/sprite/hint_string = "PlayerSprite"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcfxo"]
+radius = 4.0
+height = 16.0
+
+[node name="Player2D" type="CharacterBody2D"]
+script = ExtResource("1_pcfxo")
+speed = 100.0
+acceleration = 500.0
+
+[node name="PlayerHSM" type="LimboHSM" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_0y3hk")
+
+[node name="Disabled" type="LimboState" parent="PlayerHSM"]
+script = ExtResource("2_0y3hk")
+
+[node name="Idle" type="LimboState" parent="PlayerHSM"]
+script = ExtResource("3_gui4m")
+
+[node name="Moving" type="LimboState" parent="PlayerHSM"]
+script = ExtResource("4_qqbkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_pcfxo")
+
+[node name="PlayerSprite" parent="." instance=ExtResource("5_qqbkv")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="PlayerInput2D" type="Node" parent="."]
+script = ExtResource("5_gui4m")

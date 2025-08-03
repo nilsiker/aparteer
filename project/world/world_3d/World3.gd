@@ -2,12 +2,12 @@ class_name World
 extends Node3D
 
 func _ready() -> void:
-	GameChannel.started.connect(_on_game_started)
-	
+	GameChannel.readied.connect(_on_game_readied)
+
 	WorldChannel.level_loaded.connect(_on_world_level_loaded)
 	WorldChannel.level_unloaded.connect(_on_world_level_unloaded)
 
-func _on_game_started():
+func _on_game_readied():
 	WorldChannel.load_level("res://level/scenes/level_debug_plane.tscn")
 
 func _on_world_level_loaded(level_path: String) -> void:

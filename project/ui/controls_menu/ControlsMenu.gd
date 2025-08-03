@@ -11,7 +11,7 @@ signal closed
 
 
 func _ready() -> void:
-	GameChannel.started.connect(_on_game_started)
+	GameChannel.starting.connect(_on_game_starting)
 	GameChannel.resumed.connect(_on_game_resumed)
 	GameChannel.quitted.connect(_on_game_quitted)
 
@@ -32,7 +32,7 @@ func _add_action_input_ui(action: String) -> void:
 	action_input_ui.action = action
 	action_grid.add_child(action_input_ui)
 
-func _on_game_started() -> void:
+func _on_game_starting() -> void:
 	visible = false
 
 func _on_game_resumed() -> void:

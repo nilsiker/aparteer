@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://4xgweq0mvduw"]
+[gd_scene load_steps=9 format=3 uid="uid://4xgweq0mvduw"]
 
 [ext_resource type="Script" uid="uid://cbvosi76m5pr7" path="res://app/App.gd" id="1_e0wx5"]
 [ext_resource type="Script" uid="uid://bk7rpxg4yosxr" path="res://config/ConfigManager.gd" id="2_bnw3p"]
 [ext_resource type="PackedScene" uid="uid://e37ee3o5kay4" path="res://game/game.tscn" id="2_fx3ps"]
+[ext_resource type="PackedScene" uid="uid://ct5344or878o1" path="res://debug/debug_manager.tscn" id="3_bnw3p"]
 
 [sub_resource type="Animation" id="Animation_bnw3p"]
 length = 0.001
@@ -94,6 +95,10 @@ _data = {
 
 [node name="App" type="Node"]
 script = ExtResource("1_e0wx5")
+
+[node name="DebugManager" parent="." instance=ExtResource("3_bnw3p")]
+visible = false
+z_index = 1000
 
 [node name="ConfigManager" type="Node" parent="."]
 script = ExtResource("2_bnw3p")

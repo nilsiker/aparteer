@@ -1,7 +1,6 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	OptionsChannel.master_volume_changed.connect(_on_master_volume_changed)
 	OptionsChannel.music_volume_changed.connect(_on_music_volume_changed)
@@ -10,11 +9,6 @@ func _ready() -> void:
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), _read_master_from_config())
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Music"), _read_music_from_config())
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("SFX"), _read_sfx_from_config())
-
-func _process(_delta: float) -> void:
-	print("Master Volume: " + str(AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Master"))))
-	print("Music Volume: " + str(AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Music"))))
-	print("SFX Volume: " + str(AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("SFX"))))
 
 func _read_master_from_config() -> float:
 	return Config.read_audio_setting("master_volume")

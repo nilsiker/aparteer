@@ -14,7 +14,7 @@ func _on_controls_button_pressed() -> void:
 	OptionsChannel.open_controls_menu()
 	
 func _ready() -> void:
-	GameChannel.started.connect(_on_game_started)
+	GameChannel.starting.connect(_on_game_starting)
 	GameChannel.resumed.connect(_on_game_resumed)
 	GameChannel.quitted.connect(_on_game_quitted)
 
@@ -33,7 +33,7 @@ func _ready() -> void:
 
 	visible = false
 
-func _on_game_started() -> void:
+func _on_game_starting() -> void:
 	visible = false
 
 func _on_game_resumed() -> void:
