@@ -36,7 +36,5 @@ func _ready() -> void:
 	hsm.initialize(self)
 	hsm.set_active(true)
 
-	print(hsm.blackboard.get_var(&"input") == $PlayerInput2D)
-
 func _exit_tree() -> void:
 	DebugChannel.remove_hsm(hsm)

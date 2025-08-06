@@ -9,7 +9,7 @@ signal loaded
 signal won
 signal lost
 signal quitted
-signal paused
+signal paused(by_player: bool)
 signal resumed
 
 func request_start() -> void:
@@ -39,8 +39,8 @@ func lose() -> void:
 func quit() -> void:
 	quitted.emit()
 
-func pause() -> void:
-	paused.emit()
+func pause(by_player: bool = false) -> void:
+	paused.emit(by_player)
 
 func resume() -> void:
 	resumed.emit()

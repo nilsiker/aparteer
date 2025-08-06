@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_game_readied() -> void:
 	anim.play("show")
 
-func _on_game_paused() -> void:
+func _on_game_paused(_by_player: bool) -> void:
 	anim.play("hide")
 
 func _on_game_resumed() -> void:

@@ -26,7 +26,7 @@ func open() -> void:
 func close() -> void:
 	anim.play("hide")
 
-func _on_game_paused(): open()
+func _on_game_paused(by_player: bool): if by_player: open()
 	
 func _on_game_resumed(): close()
 

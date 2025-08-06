@@ -1,68 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://coiev2ne1hr7b"]
+[gd_scene load_steps=3 format=3 uid="uid://dbswqoykrkplm"]
 
-[ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="1_log83"]
-[ext_resource type="Script" path="res://level/Level.gd" id="1_sbqmg"]
-[ext_resource type="Script" uid="uid://blli4ldve3ha1" path="res://interaction/pickup/Pickup.gd" id="3_g3nxv"]
-[ext_resource type="PackedScene" uid="uid://qc1t0ley1ww5" path="res://ui/detection_marker/detection_marker.tscn" id="4_gejgl"]
+[ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_sbqmg"]
+[ext_resource type="PackedScene" uid="uid://tu3bldsvkda8" path="res://transition_area/transition_area.tscn" id="5_xwt7o"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g3nxv"]
-radius = 5.0
-
-[node name="Debug_Level_0" type="Node2D" node_paths=PackedStringArray("entrypoint")]
+[node name="DebugLevel0" type="Node2D"]
 script = ExtResource("1_sbqmg")
-entrypoint = NodePath("Entrypoint")
 
-[node name="Entrypoint" type="Node2D" parent="."]
-position = Vector2(112, 85)
+[node name="TransitionAreas" type="Node" parent="."]
 
-[node name="Bg" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.282353)
-position = Vector2(179.5, 108)
-scale = Vector2(2.75781, 1.64063)
-texture = ExtResource("1_log83")
+[node name="TransitionArea" parent="TransitionAreas" instance=ExtResource("5_xwt7o")]
+position = Vector2(91, 0)
+to_path = "res://level/scenes/debug_level_1.tscn"
 
-[node name="LevelLabel" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 25.0
-offset_right = 155.0
-offset_bottom = 48.0
-text = "DEBUG_LEVEL_0"
+[node name="Entrypoint" parent="TransitionAreas/TransitionArea" index="1"]
+position = Vector2(-34, 0)
 
-[node name="PickupArea" type="Area2D" parent="."]
-position = Vector2(135, 135)
-collision_layer = 4
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = -37.0
+offset_right = 118.0
+offset_bottom = -14.0
+text = "Level 0"
 
-[node name="Pickup" type="Node2D" parent="PickupArea"]
-script = ExtResource("3_g3nxv")
-id = "123"
-
-[node name="InteractIcon" parent="PickupArea/Pickup" instance=ExtResource("4_gejgl")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
-shape = SubResource("CircleShape2D_g3nxv")
-
-[node name="PickupArea2" type="Area2D" parent="."]
-position = Vector2(100, 125)
-collision_layer = 4
-
-[node name="Pickup" type="Node2D" parent="PickupArea2"]
-script = ExtResource("3_g3nxv")
-id = "asd"
-
-[node name="InteractIcon" parent="PickupArea2/Pickup" instance=ExtResource("4_gejgl")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2"]
-shape = SubResource("CircleShape2D_g3nxv")
-
-[node name="PickupArea3" type="Area2D" parent="."]
-position = Vector2(87, 115)
-collision_layer = 4
-
-[node name="Pickup" type="Node2D" parent="PickupArea3"]
-script = ExtResource("3_g3nxv")
-id = "hd"
-
-[node name="InteractIcon" parent="PickupArea3/Pickup" instance=ExtResource("4_gejgl")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea3"]
-shape = SubResource("CircleShape2D_g3nxv")
+[editable path="TransitionAreas/TransitionArea"]

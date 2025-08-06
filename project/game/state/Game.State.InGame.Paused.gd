@@ -1,7 +1,5 @@
+class_name GameState_InGame_Paused
 extends GameState_InGame
-
-func _setup() -> void:
-	add_event_handler(Game.Event.PAUSE, _on_game_event_pause)
 
 func _enter() -> void:
 	super._enter()
@@ -17,9 +15,5 @@ func _exit() -> void:
 
 
 func _on_game_resumed():
+	print("resuming")
 	dispatch(Game.To.INGAME_PLAYING)
-	return true
-
-func _on_game_event_pause():
-	GameChannel.resume()
-	return true

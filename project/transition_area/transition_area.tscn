@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tu3bldsvkda8"]
+
+[ext_resource type="Script" uid="uid://bijt4uhk2btpw" path="res://transition_area/TransitionArea.gd" id="1_klygb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jboj"]
+
+[node name="TransitionArea" type="Area2D"]
+script = ExtResource("1_klygb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0jboj")
+
+[node name="Entrypoint" type="Node2D" parent="."]

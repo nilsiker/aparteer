@@ -30,12 +30,13 @@ func _unload_level(level_path: String) -> void:
 func _unload_all_levels() -> void:
 	NodeExt.clear_children(self)
 
-func _transition_to_level(level_path: String) -> void:
+func _transition_to_level(to_level_path: String, from_level_path: String) -> void:
 	_unload_all_levels()
-	var level = _load_level(level_path)
-	WorldChannel.finish_transition(level.get_entrypoint())
-
-func _on_game_starting() -> void: _transition_to_level(start_scene.resource_path)
+	var level = _load_level(to_level_path)
+	WorldChannel.finish_transition(level.get_entrypoint(from_level_path))
+	GameChannel.resume()
+	
+func _on_game_starting() -> void: _transition_to_level(start_scene.resource_path, "")
 
 func _on_game_quitted() -> void: _unload_all_levels()
 
@@ -43,4 +44,6 @@ func _on_world_level_loaded(level_path: String) -> void: _load_level(level_path)
 
 func _on_world_level_unloaded(level_path: String) -> void: _unload_level(level_path)
 
-func _on_world_transition_started(level_path: String) -> void: _transition_to_level(level_path)
+func _on_world_transition_started(to_level_path: String, from_level_path: String) -> void:
+	GameChannel.pause()
+	AppChannel.obscure(func(): _transition_to_level(to_level_path, from_level_path))

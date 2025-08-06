@@ -94,6 +94,7 @@ _data = {
 }
 
 [node name="App" type="Node"]
+process_mode = 3
 script = ExtResource("1_e0wx5")
 
 [node name="DebugManager" parent="." instance=ExtResource("3_bnw3p")]

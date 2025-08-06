@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://e37ee3o5kay4"]
+[gd_scene load_steps=20 format=3 uid="uid://e37ee3o5kay4"]
 
 [ext_resource type="Script" uid="uid://c10jijdr5644l" path="res://game/Game.gd" id="1_h7iqs"]
 [ext_resource type="Script" uid="uid://cqn6uv70jfr6q" path="res://player/PlayerManager.gd" id="2_4fuuu"]
@@ -10,12 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://cmp03a8dsb0ge" path="res://ui/main_menu/main_menu.tscn" id="5_u5opy"]
 [ext_resource type="PackedScene" uid="uid://go07gw5rojqj" path="res://player/player_2d/player_2d.tscn" id="6_ee6o4"]
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
+[ext_resource type="Script" uid="uid://f3w4322avymy" path="res://game/state/Game.State.InGame.Paused.ByPlayer.gd" id="7_pxxsx"]
 [ext_resource type="Script" uid="uid://cnli4nq1qr15l" path="res://input/InputManager.gd" id="8_ee6o4"]
 [ext_resource type="Script" uid="uid://bgbnf1iqmk82o" path="res://audio/AudioManager.gd" id="9_ee6o4"]
-[ext_resource type="PackedScene" uid="uid://c5r6pr436xbk" path="res://level/scenes/debug_level_0.tscn" id="11_4cobl"]
 [ext_resource type="Script" uid="uid://cqjmnwio3rcig" path="res://world/world_2d/World2D.gd" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://f2qa8cigqqrw" path="res://ui/hud/hud.tscn" id="11_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://ui/pause_menu/pause_menu.tscn" id="12_qf6n1"]
+[ext_resource type="PackedScene" uid="uid://dbswqoykrkplm" path="res://level/scenes/debug_level_0.tscn" id="13_ln7ps"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
 [ext_resource type="PackedScene" uid="uid://brrjbfs15quv8" path="res://ui/options_menu/options_tab_menu.tscn" id="14_hb504"]
 
@@ -39,6 +40,9 @@ script = ExtResource("4_qf6n1")
 
 [node name="InGame_Paused" type="LimboState" parent="HSM"]
 script = ExtResource("3_3vho3")
+
+[node name="InGame_Paused_ByPlayer" type="LimboState" parent="HSM"]
+script = ExtResource("7_pxxsx")
 
 [node name="PlayerManager" type="Node" parent="." node_paths=PackedStringArray("player_parent")]
 script = ExtResource("2_4fuuu")
@@ -72,7 +76,7 @@ render_target_update_mode = 4
 
 [node name="World2D" type="Node2D" parent="WorldViewportContainer/WorldViewport"]
 script = ExtResource("11_ee6o4")
-start_scene = ExtResource("11_4cobl")
+start_scene = ExtResource("13_ln7ps")
 
 [node name="UIViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 3

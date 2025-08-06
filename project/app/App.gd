@@ -26,3 +26,4 @@ func _on_app_obscured(callback: Callable) -> void:
 	callback.call()
 	blackout.play("reveal")
 	AppChannel.reveal()
+	

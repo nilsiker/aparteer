@@ -9,7 +9,7 @@ func _exit() -> void:
 	GameChannel.paused.disconnect(_on_game_paused)
 	GameChannel.resumed.disconnect(_on_game_resumed)
 
-func _on_game_paused() -> void:
+func _on_game_paused(_by_player: bool) -> void:
 	dispatch(Player2D.To.DISABLED)
 
 func _on_game_resumed() -> void:

@@ -9,7 +9,6 @@ func _exit() -> void:
 	GameChannel.resumed.disconnect(_on_game_resumed)
 
 func _on_game_readied() -> void:
-	print("Game readied, transitioning to IDLE state")
 	dispatch(Player2D.To.IDLE)
 
 func _on_game_resumed() -> void:

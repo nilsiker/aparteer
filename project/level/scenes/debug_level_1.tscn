@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8fk2i2271f6m"]
+
+[ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_qtdkm"]
+[ext_resource type="PackedScene" uid="uid://tu3bldsvkda8" path="res://transition_area/transition_area.tscn" id="5_e86ll"]
+
+[node name="DebugLevel1" type="Node2D"]
+script = ExtResource("1_qtdkm")
+
+[node name="TransitionAreas" type="Node" parent="."]
+
+[node name="TransitionArea" parent="TransitionAreas" instance=ExtResource("5_e86ll")]
+position = Vector2(91, 0)
+to_path = "uid://dbswqoykrkplm"
+
+[node name="Entrypoint" parent="TransitionAreas/TransitionArea" index="1"]
+position = Vector2(23, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = -37.0
+offset_right = 118.0
+offset_bottom = -14.0
+text = "Level 1"
+
+[editable path="TransitionAreas/TransitionArea"]
