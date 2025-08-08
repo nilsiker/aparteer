@@ -11,7 +11,7 @@ func walk() -> void:
 	anim.play("walk")
 
 func interact() -> void:
-	anim.play("interact")
+	#anim.play("interact")
 	label.text = "interact"
 
 func face(vector: Vector2) -> void:

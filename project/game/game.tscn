@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://4p5v6f7giyn7" path="res://save/SaveManager.gd" id="6_j8tme"]
 [ext_resource type="Script" uid="uid://f3w4322avymy" path="res://game/state/Game.State.InGame.Paused.ByPlayer.gd" id="7_pxxsx"]
 [ext_resource type="Script" uid="uid://cnli4nq1qr15l" path="res://input/InputManager.gd" id="8_ee6o4"]
-[ext_resource type="Script" uid="uid://bgbnf1iqmk82o" path="res://audio/AudioManager.gd" id="9_ee6o4"]
 [ext_resource type="Script" uid="uid://cqjmnwio3rcig" path="res://world/world_2d/World2D.gd" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://f2qa8cigqqrw" path="res://ui/hud/hud.tscn" id="11_ln7ps"]
+[ext_resource type="PackedScene" uid="uid://cia2iagx7bl0k" path="res://audio/audio_manager.tscn" id="12_pxxsx"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://ui/pause_menu/pause_menu.tscn" id="12_qf6n1"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
 [ext_resource type="PackedScene" uid="uid://brrjbfs15quv8" path="res://ui/options_menu/options_tab_menu.tscn" id="14_hb504"]
@@ -55,8 +55,7 @@ script = ExtResource("6_j8tme")
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("8_ee6o4")
 
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("9_ee6o4")
+[node name="AudioManager" parent="." instance=ExtResource("12_pxxsx")]
 
 [node name="WorldViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 1

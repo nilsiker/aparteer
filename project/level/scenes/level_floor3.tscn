@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://e8p6l20ld8n6"]
+[gd_scene load_steps=6 format=3 uid="uid://dgci1nw8o0001"]
 
-[ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_psxtd"]
-[ext_resource type="PackedScene" uid="uid://tu3bldsvkda8" path="res://transition_area/transition_area.tscn" id="2_8n8of"]
-[ext_resource type="Script" uid="uid://ulhrthwtpt8a" path="res://Fog.gd" id="3_4w0mr"]
-[ext_resource type="PackedScene" uid="uid://d4jbws2k7co5p" path="res://door/door_2d.tscn" id="3_8n8of"]
+[ext_resource type="Script" uid="uid://7bdhhdidjk0x" path="res://level/Level.gd" id="1_melyc"]
+[ext_resource type="PackedScene" uid="uid://tu3bldsvkda8" path="res://transition_area/transition_area.tscn" id="2_b0lsm"]
+[ext_resource type="PackedScene" uid="uid://d4jbws2k7co5p" path="res://door/door_2d.tscn" id="3_e84d4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8n8of"]
 distance = -42.0
@@ -12,17 +11,8 @@ distance = -42.0
 _data = PackedByteArray(0, 0, 3, 0, 5, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0, 38, 0, 0, 0, 82, 73, 70, 70, 30, 0, 0, 0, 87, 69, 66, 80, 86, 80, 56, 76, 17, 0, 0, 0, 47, 15, 192, 3, 0, 7, 208, 255, 254, 247, 191, 255, 129, 136, 232, 127, 0, 0)
 size_override = Vector2(16, 16)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8n8of"]
-blend_mode = 3
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4w0mr"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8bgyy"]
-in_3d_space = true
-noise = SubResource("FastNoiseLite_4w0mr")
-
-[node name="Apt313" type="Node2D"]
-script = ExtResource("1_psxtd")
+[node name="Floor3" type="Node2D"]
+script = ExtResource("1_melyc")
 
 [node name="Darkness" type="CanvasModulate" parent="."]
 color = Color(0.408329, 0.408329, 0.408329, 1)
@@ -41,9 +31,9 @@ shape = SubResource("WorldBoundaryShape2D_8n8of")
 
 [node name="TransitionAreas" type="Node" parent="."]
 
-[node name="TransitionArea" parent="TransitionAreas" instance=ExtResource("2_8n8of")]
+[node name="TransitionArea" parent="TransitionAreas" instance=ExtResource("2_b0lsm")]
 position = Vector2(-15, 0)
-to_path = "res://level/scenes/debug_level_1.tscn"
+to_path = "uid://e8p6l20ld8n6"
 
 [node name="CollisionShape2D" parent="TransitionAreas/TransitionArea" index="0"]
 position = Vector2(0, -10)
@@ -58,8 +48,8 @@ z_index = -1
 [node name="Darkness" type="Sprite2D" parent="Background"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-position = Vector2(-1.74999, -16.75)
-scale = Vector2(23.1562, 13.2188)
+position = Vector2(178, -64.9998)
+scale = Vector2(45.625, 19.25)
 texture = SubResource("PortableCompressedTexture2D_psxtd")
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
@@ -88,8 +78,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "212ac9cf584575e4f8d32b2c040349e7"
 [node name="Wall" type="Sprite2D" parent="Background"]
 modulate = Color(0.42, 0.42, 0.336, 1)
 texture_filter = 1
-position = Vector2(-1.90735e-06, -32.5)
-scale = Vector2(10.125, 4.0625)
+position = Vector2(76, -32.5)
+scale = Vector2(19.625, 4.0625)
 texture = SubResource("PortableCompressedTexture2D_psxtd")
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": false,
@@ -117,16 +107,10 @@ metadata/_aseprite_wizard_source_file_hash_ = "212ac9cf584575e4f8d32b2c040349e7"
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Door2D" parent="Entities" instance=ExtResource("3_8n8of")]
+[node name="Door2D" parent="Entities" instance=ExtResource("3_e84d4")]
 position = Vector2(21, 0)
-to = "uid://dgci1nw8o0001"
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1
-
-[node name="Fog" type="Sprite2D" parent="Foreground"]
-material = SubResource("CanvasItemMaterial_8n8of")
-texture = SubResource("NoiseTexture2D_8bgyy")
-script = ExtResource("3_4w0mr")
 
 [editable path="TransitionAreas/TransitionArea"]

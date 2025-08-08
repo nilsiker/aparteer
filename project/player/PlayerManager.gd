@@ -10,7 +10,6 @@ func _ready() -> void:
 	GameChannel.quitted.connect(_on_game_quitted)
 	WorldChannel.transition_finished.connect(_on_world_transition_finished)
 
-
 func _spawn(transform: Transform2D) -> void:
 	if player: _despawn()
 

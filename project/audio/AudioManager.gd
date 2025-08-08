@@ -1,6 +1,5 @@
 extends Node
 
-
 func _ready() -> void:
 	OptionsChannel.master_volume_changed.connect(_on_master_volume_changed)
 	OptionsChannel.music_volume_changed.connect(_on_music_volume_changed)

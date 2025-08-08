@@ -2,8 +2,14 @@ class_name NodeExt
 
 static func get_parent(node: Node, cls: String) -> Node:
 	var parent = node.get_parent()
-	while parent and parent.get_script() and not parent.is_class(cls):
-		parent = parent.get_parent()
+	if not parent: return parent
+	
+	while parent:
+		if not parent.get_script():
+			parent = parent.get_parent()
+		elif parent.get_script().get_global_name() == cls:
+			return parent
+		else: parent = parent.get_parent()
 	return parent
 
 ## Removes a node from its parent and queues it for deletion.
