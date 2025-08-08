@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://go07gw5rojqj"]
+[gd_scene load_steps=15 format=3 uid="uid://go07gw5rojqj"]
 
 [ext_resource type="Script" uid="uid://rop0bxcjv6em" path="res://player/player_2d/Player2D.gd" id="1_pcfxo"]
 [ext_resource type="Script" uid="uid://cjkeeub5y3ov1" path="res://player/player_2d/state/PlayerState.Disabled.gd" id="2_0y3hk"]
@@ -32,9 +32,20 @@ var/interactor/hint_string = "Interactor"
 radius = 4.0
 height = 16.0
 
+[sub_resource type="Gradient" id="Gradient_jkis4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qd5v4"]
+gradient = SubResource("Gradient_jkis4")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Player2D" type="CharacterBody2D"]
 script = ExtResource("1_pcfxo")
-speed = 60.0
+speed = 30.0
 acceleration = 400.0
 
 [node name="PlayerHSM" type="LimboHSM" parent="."]
@@ -57,6 +68,7 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_pcfxo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -17)
 zoom = Vector2(6, 6)
 
 [node name="=== COMPONENTS ===" type="Node" parent="."]
@@ -65,7 +77,7 @@ zoom = Vector2(6, 6)
 script = ExtResource("5_gui4m")
 
 [node name="PlayerSprite" parent="." instance=ExtResource("5_qqbkv")]
-position = Vector2(0, -3)
+position = Vector2(0, -16)
 
 [node name="Interactor" type="Node2D" parent="." node_paths=PackedStringArray("picker")]
 script = ExtResource("8_1np0i")
@@ -76,3 +88,7 @@ collision_mask = 4
 
 [node name="InteractablePicker" parent="Interactor" instance=ExtResource("9_jkis4")]
 collision_mask = 4
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -17)
+texture = SubResource("GradientTexture2D_qd5v4")

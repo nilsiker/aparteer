@@ -1,11 +1,11 @@
 class_name InteractableSelector
 extends Area2D
 
-signal selected(previous: Interactable, new: Interactable)
+signal selected(previous: Node, new: Node)
 
 @export var direction: Vector2 = Vector2.RIGHT
 
-var _selected: Interactable = null
+var _selected: Node = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
@@ -17,15 +17,15 @@ func _physics_process(_delta: float) -> void:
 
 	var interactables = []
 	for node in nodes:
-		var children = node.get_children().filter(func(child): return child is Interactable)
-		interactables.append_array(children)
+		if node.has_method("interact"):
+			interactables.push_back(node)
 
 	_select_closest(interactables)
 
 
 func _select_closest(interactables: Array) -> void:
 	var current = _selected
-	var new_closest: Interactable = null if interactables.is_empty() else interactables.front()
+	var new_closest = null if interactables.is_empty() else interactables.front()
 	for candidate in interactables:
 		var closest_distance = global_position.distance_to(new_closest.get_global_pos())
 		var candidate_distance = global_position.distance_to(candidate.get_global_pos())

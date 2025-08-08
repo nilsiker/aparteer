@@ -16,7 +16,7 @@ func _ready() -> void:
 	save_button.pressed.connect(_on_save_pressed)
 	options_button.pressed.connect(_on_options_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
-	
+
 	visible = false
 	
 func open() -> void:
@@ -46,7 +46,4 @@ func _on_quit_pressed() -> void:
 	AppChannel.obscure(GameChannel.quit)
 
 func _on_options_closed() -> void:
-	if visible: options_button.grab_focus()
-	
-func _on_controls_closed() -> void:
 	if visible: options_button.grab_focus()

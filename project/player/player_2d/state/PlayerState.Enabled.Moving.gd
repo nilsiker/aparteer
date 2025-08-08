@@ -33,7 +33,9 @@ func _update(delta: float) -> void:
 		dispatch(Player2D.To.IDLE)
 
 func _update_velocity(delta: float) -> void:
-	body.velocity = body.velocity.move_toward(input.input_vector * body.speed, body.acceleration * delta)
+	var vel = input.input_vector
+	vel.y = 0
+	body.velocity = body.velocity.move_toward(vel * body.speed, body.acceleration * delta)
 
 func _on_input_vector_changed(input_vector: Vector2) -> void:
 	if input_vector == Vector2.ZERO: return

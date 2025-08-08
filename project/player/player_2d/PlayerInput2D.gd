@@ -11,6 +11,12 @@ var input_vector: Vector2:
 			input_vector = value
 			input_vector_changed.emit(input_vector)
 
+func vertical() -> float:
+	return input_vector.y
+
+func horizontal() -> float:
+	return input_vector.x
+
 func _process(_delta: float) -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

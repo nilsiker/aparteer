@@ -1,5 +1,5 @@
-class_name Interactable
-extends Node
+class_name InteractableArea2D
+extends Area2D
 
 signal detected
 signal undetected
@@ -18,7 +18,7 @@ func interact() -> void:
 	pass
 
 func get_global_pos() -> Vector2:
-	return get_parent().global_position
+	return global_position
 
 func on_detected(): detected.emit()
 func on_undetected(): undetected.emit()

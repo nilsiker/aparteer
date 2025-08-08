@@ -4,21 +4,11 @@ extends Sprite2D
 @onready var label: Label = %AnimLabel
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
-var _side: String = "f"
-var _action: String = "idle"
-
-const SIDE_L = "l"
-const SIDE_R = "r"
-const SIDE_F = "f"
-const SIDE_B = "b"
-
 func idle() -> void:
-	_action = "idle"
-	_update_animation()
+	anim.play("idle")
 
 func walk() -> void:
-	_action = "walk"
-	_update_animation()
+	anim.play("walk")
 
 func interact() -> void:
 	anim.play("interact")
@@ -28,14 +18,3 @@ func face(vector: Vector2) -> void:
 	if vector == Vector2.ZERO: return
 
 	flip_h = vector.x < 0
-
-	if vector.y > 0: _side = SIDE_F
-	elif vector.y < 0: _side = SIDE_B
-	elif vector.x < 0: _side = "s"
-	elif vector.x > 0: _side = "s"
-	
-	_update_animation()
-		
-func _update_animation() -> void:
-	anim.play("{0}_{1}".format([_side, _action]))
-	label.text = "{0}_{1}".format([_side, _action])

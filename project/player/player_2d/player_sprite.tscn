@@ -1,77 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://d262hamx0n175"]
+[gd_scene load_steps=6 format=4 uid="uid://d262hamx0n175"]
 
 [ext_resource type="Script" uid="uid://dwau1tbwcfmk8" path="res://player/player_2d/PlayerSprite.gd" id="1_l115f"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_l115f"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAADEAAAAUklGRrwAAABXRUJQVlA4TLAAAAAvH8AHEB8w//M///MfgFJwW9tu20ABh5WccVhqCvYeQeGX3MJc09mdB3CrNIGA4xki+q+wbdumIzup+kbDDRM1nCSJ9n38x2vfsB222geBaF8MkFWGaGTDu9JIatiSJ0GNuuGPX9ziUA/bRaWDaHjZRnlwY+TDSCrPmUoiooathMDQ68+UfthaeoiljwGSGJWGqaRyt0qi/+RJYOTvG4PKy3XYqoRYadhDXNdOuWlXAg==")
-size_override = Vector2(32, 32)
-
-[sub_resource type="Animation" id="Animation_fcud3"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_jkis4"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [13, 11, 14, 11]
-}
-
-[sub_resource type="Animation" id="Animation_0y3hk"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_gui4m"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3, 2, 4, 2]
-}
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAADUAgAAUklGRswCAABXRUJQVlA4TMACAAAvX8AXEI+gJAAQBJdK5hH/38gONZEkKceQk7j3r+I+UNRICkMvGvhiA/9CsAHJ/AcAqOrMSgQgKjMDwMzT3zo9e2f/6y2RITNYCgEzb0CWbVtVK7Gt7QEUfPS/t0eSwb6e1HdE/x24beNI8sz2Iu/dK9KPBZ7XvUUtevBmb6ja/9YM5PXfe71BE0HGeSJD7y1yap/19BB6bwmcIreHkHuL3Pdvs9z3QrzZ24gksizOm73NDMpcCBJcptXw2RvzUwTkCAnda5qczTIEzLCuMJuF3+A8Rs4DrmbMmWbr3AC/9SbmMVIjewbU3hKAApc153WhI/WWMHsOQ2HJeRkQewtw2BBY12XYc6TeCgCp8NRehj0CYm9lAVK58FsmP/tnb82cg/R82keSXlwUTwL9GNL/oLeQR1qjD9fpvSVzmWOorvaOgOqlcmlcbnVdXfbS6CK9D9fJXhKtd4nW2nCd7iWaS+z7Plyne4nmEtu2DdfpXhKSVPU8VI/upaBI7U8+nvQHXqL7LwdAbG+QRGRv0JyXvf8AnsG9cZ7BvXHf73v/uBeRgnubIbA3OBDYG8zZLCOydzYyI7S3GRnc24DQ3ubJQGBvDmaI6w2QTmjvR51xvRNAAEhhvVNqnpLSy94tKfTj6KXovRVKc3ONZ2qjezSKytGPJJIOj0br4uK6UnLEcWkUV9e+uqPuHpeK9sM1d1Jp4uHyKDfFbG9t1Ju/anOKyPPfnmff9s/6s+zb1orAp21vLdV9Vvtb/1lqEkkPrdW6zVJrdRT3vdZSikzatm2f1fYkLe41/GjycPufDYDgkyRiT/sFzuDgDM99/+chUnDMIg8wPjmbZYTGyOgYGR0gNObJgQfIYSMwABkbEmTsC0E8lwROe5IiU1o/jtiU+LQenuMKPZ9Fj7z1G7QWm7Tve2T8un3bwlNrTZGzPwlFAg==")
+size_override = Vector2(96, 96)
 
 [sub_resource type="Animation" id="Animation_lpvyt"]
-length = 0.2
+length = 2.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -80,30 +16,13 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
-
-[sub_resource type="Animation" id="Animation_qqbkv"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
+"times": PackedFloat32Array(0, 0.8, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [5, 6, 7]
+"values": [0, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_1np0i"]
-length = 0.6
+[sub_resource type="Animation" id="Animation_ev6pf"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -112,35 +31,31 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 6, 9, 6]
+"values": [2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qd5v4"]
 _data = {
-&"b_idle": SubResource("Animation_fcud3"),
-&"b_walk": SubResource("Animation_jkis4"),
-&"f_idle": SubResource("Animation_0y3hk"),
-&"f_walk": SubResource("Animation_gui4m"),
-&"interact": SubResource("Animation_lpvyt"),
-&"s_idle": SubResource("Animation_qqbkv"),
-&"s_walk": SubResource("Animation_1np0i")
+&"idle": SubResource("Animation_lpvyt"),
+&"walk": SubResource("Animation_ev6pf")
 }
 
 [node name="PlayerSprite" type="Sprite2D"]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_l115f")
-offset = Vector2(0, -0.5)
-hframes = 4
-vframes = 4
-frame = 10
+hframes = 3
+vframes = 3
 script = ExtResource("1_l115f")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
 "embed_tex": true,
 "i_mode": 0,
 "keep_anim_length": false,
@@ -152,10 +67,10 @@ metadata/_aseprite_wizard_config_ = {
 "player": "AnimationPlayer",
 "scale": "1.0",
 "slice": "",
-"source": "res://player/player_2d/art/player2d.aseprite",
-"source_uid": 4687525326168665546
+"source": "res://player/player_2d/art/man combined.aseprite",
+"source_uid": 5913845311130067371
 }
-metadata/_aseprite_wizard_source_file_hash_ = "a61eb4a274625596f3734c624b8e2b66"
+metadata/_aseprite_wizard_source_file_hash_ = "8046a0543a4dddfa90f7efd6fdcac46e"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -182,6 +97,7 @@ size_flags_vertical = 8
 
 [node name="AnimLabel" type="Label" parent="AnimLabelControl"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

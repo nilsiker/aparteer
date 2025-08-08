@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://cqjmnwio3rcig" path="res://world/world_2d/World2D.gd" id="11_ee6o4"]
 [ext_resource type="PackedScene" uid="uid://f2qa8cigqqrw" path="res://ui/hud/hud.tscn" id="11_ln7ps"]
 [ext_resource type="PackedScene" uid="uid://lp0cg4rewg67" path="res://ui/pause_menu/pause_menu.tscn" id="12_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://dbswqoykrkplm" path="res://level/scenes/debug_level_0.tscn" id="13_ln7ps"]
 [ext_resource type="Theme" uid="uid://bm3yci578ubi8" path="res://ui/theme_default.tres" id="14_b686c"]
 [ext_resource type="PackedScene" uid="uid://brrjbfs15quv8" path="res://ui/options_menu/options_tab_menu.tscn" id="14_hb504"]
+[ext_resource type="PackedScene" uid="uid://e8p6l20ld8n6" path="res://level/scenes/level_apt313.tscn" id="14_pxxsx"]
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -47,7 +47,7 @@ script = ExtResource("7_pxxsx")
 [node name="PlayerManager" type="Node" parent="." node_paths=PackedStringArray("player_parent")]
 script = ExtResource("2_4fuuu")
 player_scene = ExtResource("6_ee6o4")
-player_parent = NodePath("../WorldViewportContainer/WorldViewport/World2D")
+player_parent = NodePath("../WorldViewportContainer/WorldViewport/World2D/PlayerContainer")
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("6_j8tme")
@@ -76,7 +76,13 @@ render_target_update_mode = 4
 
 [node name="World2D" type="Node2D" parent="WorldViewportContainer/WorldViewport"]
 script = ExtResource("11_ee6o4")
-start_scene = ExtResource("13_ln7ps")
+start_scene = ExtResource("14_pxxsx")
+
+[node name="PlayerContainer" type="Node2D" parent="WorldViewportContainer/WorldViewport/World2D"]
+z_as_relative = false
+
+[node name="Levels" type="Node2D" parent="WorldViewportContainer/WorldViewport/World2D"]
+z_as_relative = false
 
 [node name="UIViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 3

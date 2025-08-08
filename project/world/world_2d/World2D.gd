@@ -2,6 +2,7 @@ class_name World2
 extends Node2D
 
 @export var start_scene: PackedScene
+@onready var levels_parent: Node = $Levels
 
 func _ready() -> void:
 	GameChannel.starting.connect(_on_game_starting)
@@ -17,18 +18,18 @@ func _load_level(level_path: String) -> Node:
 		push_error("Failed to load level at ", level_path)
 		return null
 	var node = level.instantiate()
-	add_child(node)
+	levels_parent.add_child(node)
 	return node
 
 func _unload_level(level_path: String) -> void:
-	var node = get_children().filter(func(child: Node): return child.scene_file_path == level_path).front()
+	var node = levels_parent.get_children().filter(func(child: Node): return child.scene_file_path == level_path).front()
 	if not node:
 		push_warning("no level found for ", level_path)
 		return
 	NodeExt.remove(node)
 
 func _unload_all_levels() -> void:
-	NodeExt.clear_children(self)
+	NodeExt.clear_children(levels_parent)
 
 func _transition_to_level(to_level_path: String, from_level_path: String) -> void:
 	_unload_all_levels()

@@ -10,8 +10,8 @@ func _ready() -> void:
 	_initial_scale = scale
 	modulate = Color.TRANSPARENT
 
-	var parent = get_parent() as Interactable
-	if parent:
+	var parent = get_parent()
+	if  parent is InteractableArea2D:
 		parent.detected.connect(detect)
 		parent.undetected.connect(undetect)
 		parent.selected.connect(select)
@@ -33,6 +33,7 @@ func _update_icon() -> void:
 			tween.tween_property(self, "scale", _initial_scale * 1.5, 0.2)
 
 func detect() -> void: 
+	print("delected")
 	detected = true
 	_update_icon()
 
@@ -41,6 +42,7 @@ func undetect() -> void:
 	_update_icon()
 
 func select() -> void: 
+	print("selected")
 	selected = true
 	_update_icon()
 

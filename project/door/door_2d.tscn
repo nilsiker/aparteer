@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4jbws2k7co5p"]
+
+[ext_resource type="Script" uid="uid://dnm757ub7uklo" path="res://door/Door2D.gd" id="1_rdd60"]
+[ext_resource type="PackedScene" uid="uid://qc1t0ley1ww5" path="res://ui/detection_marker/detection_marker.tscn" id="2_08xnr"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qyxu6"]
+_data = PackedByteArray(0, 0, 3, 0, 5, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0, 38, 0, 0, 0, 82, 73, 70, 70, 30, 0, 0, 0, 87, 69, 66, 80, 86, 80, 56, 76, 17, 0, 0, 0, 47, 15, 192, 3, 0, 7, 208, 255, 254, 247, 191, 255, 129, 136, 232, 127, 0, 0)
+size_override = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plcny"]
+size = Vector2(8, 20)
+
+[node name="Door2D" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_rdd60")
+
+[node name="DoorSprite" type="Sprite2D" parent="."]
+modulate = Color(0.1924, 0.26, 0.1924, 1)
+texture_filter = 1
+position = Vector2(-1.19209e-07, -19.5)
+scale = Vector2(1.25, 2.4375)
+texture = SubResource("PortableCompressedTexture2D_qyxu6")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://square.aseprite",
+"source_uid": 498611461830699806
+}
+metadata/_aseprite_wizard_source_file_hash_ = "212ac9cf584575e4f8d32b2c040349e7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_plcny")
+
+[node name="InteractionIcon" parent="." instance=ExtResource("2_08xnr")]
+offset_top = -14.0
+offset_bottom = -14.0

@@ -1,7 +1,11 @@
+@tool
 class_name Pickup
-extends Interactable
+extends InteractableArea
 
-@export var id: String
+@export var item: ItemResource
 
 func interact() -> void:
-	print("Pickup interact called on ", id)
+	on_picked_up()
+	
+func on_picked_up() -> void:
+	NodeExt.remove(self)

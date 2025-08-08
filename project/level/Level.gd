@@ -8,4 +8,3 @@ func get_entrypoint(from_level_path: String) -> Node2D:
 	
 	if (areas.is_empty()): return null
 	else: return areas.pop_back().find_child("Entrypoint")
-	

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://rnlq7uiwi00d"]
+
+[ext_resource type="Script" uid="uid://bktvn5gfqa7oo" path="res://itemization/ItemResource.gd" id="1_7egau"]
+[ext_resource type="Texture2D" uid="uid://drwy62tb6khnd" path="res://icon.svg" id="2_1dbix"]
+
+[resource]
+script = ExtResource("1_7egau")
+name = "Bottle"
+sprite = ExtResource("2_1dbix")
+metadata/_custom_type_script = "uid://bktvn5gfqa7oo"
