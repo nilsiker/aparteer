@@ -44,6 +44,7 @@ shape = SubResource("WorldBoundaryShape2D_8n8of")
 [node name="TransitionArea" parent="TransitionAreas" instance=ExtResource("2_8n8of")]
 position = Vector2(-15, 0)
 to_path = "res://level/scenes/debug_level_1.tscn"
+from_path = "res://level/scenes/level_apt313.tscn"
 
 [node name="CollisionShape2D" parent="TransitionAreas/TransitionArea" index="0"]
 position = Vector2(0, -10)
@@ -120,6 +121,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "212ac9cf584575e4f8d32b2c040349e7"
 [node name="Door2D" parent="Entities" instance=ExtResource("3_8n8of")]
 position = Vector2(21, 0)
 to = "uid://dgci1nw8o0001"
+from = "res://level/scenes/level_apt313.tscn"
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1

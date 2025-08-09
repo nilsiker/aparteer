@@ -37,7 +37,7 @@ func _transition_to_level(to_level_path: String, from_level_path: String) -> voi
 	WorldChannel.finish_transition(level.get_entrypoint(from_level_path))
 	GameChannel.resume()
 	
-func _on_game_starting() -> void: _transition_to_level(start_scene.resource_path, "")
+func _on_game_starting() -> void: _transition_to_level(start_scene.resource_path, start_scene.resource_path)
 
 func _on_game_quitted() -> void: _unload_all_levels()
 
